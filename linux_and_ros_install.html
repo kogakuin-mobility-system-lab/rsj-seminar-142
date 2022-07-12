@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Linuxの基本操作</title>
+  <style type="text/css">
+  html{font-family: sans-serif;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%}body{margin: 0}article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display: block}audio,canvas,progress,video{display: inline-block;vertical-align: baseline}audio:not([controls]){display: none;height: 0}[hidden],template{display: none}a{background: transparent}a:active,a:hover{outline: 0}abbr[title]{border-bottom: 1px dotted}b,strong{font-weight: bold}dfn{font-style: italic}h1{font-size: 2em;margin: 0.67em 0}mark{background: #ff0;color: #282a3a}small{font-size: 80%}sub,sup{font-size: 75%;line-height: 0;position: relative;vertical-align: baseline}sup{top: -0.5em}sub{bottom: -0.25em}img{border: 0}svg:not(:root){overflow: hidden}figure{margin: 1em 40px}hr{box-sizing: content-box;height: 0}pre{overflow: auto}code,kbd,pre,samp{font-family: monospace, monospace;font-size: 1em}button,input,optgroup,select,textarea{color: inherit;font: inherit;margin: 0}button{overflow: visible}button,select{text-transform: none}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance: button;cursor: pointer}button[disabled],html input[disabled]{cursor: default}button::-moz-focus-inner,input::-moz-focus-inner{border: 0;padding: 0}input{line-height: normal}input[type="checkbox"],input[type="radio"]{box-sizing: border-box;padding: 0}input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{height: auto}input[type="search"]{-webkit-appearance: textfield;box-sizing: content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance: none}fieldset{border: 1px solid #c0c0c0;margin: 0 2px;padding: 0.35em 0.625em 0.75em}legend{border: 0;padding: 0}textarea{overflow: auto}optgroup{font-weight: bold}table{border-collapse: collapse;border-spacing: 0}td,th{padding: 0}*{box-sizing: border-box}input,select,textarea,button{font: 13px/1.4 Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"}body{min-width: 1020px;font: 13px/1.4 Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";color: #282a3a;background-color: #fff}a{color: #4183c4;text-decoration: none}a:hover,a:active{text-decoration: underline}hr,.rule{height: 0;margin: 15px 0;overflow: hidden;background: transparent;border: 0;border-bottom: 1px solid #ddd}hr:before,.rule:before{display: table;content: ""}hr:after,.rule:after{display: table;clear: both;content: ""}h1,h2,h3,h4,h5,h6{margin-top: 15px;margin-bottom: 15px;line-height: 1.1}h1{font-size: 30px}h2{font-size: 21px}h3{font-size: 16px}h4{font-size: 14px}h5{font-size: 12px}h6{font-size: 11px}small{font-size: 90%}blockquote{margin: 0}.lead{margin-bottom: 30px;font-size: 20px;font-weight: 300;color: #555}.text-muted{color: #999}.text-danger{color: #bd2c00}.text-emphasized{font-weight: bold;color: #333}ul,ol{padding: 0;margin-top: 0;margin-bottom: 0}ol ol,ul ol{list-style-type: lower-roman}ul ul ol,ul ol ol,ol ul ol,ol ol ol{list-style-type: lower-alpha}dd{margin-left: 0}tt,code{font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;font-size: 12px}pre{margin-top: 0;margin-bottom: 0;font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace}#realtime .status{overflow: visible;position: absolute;top: -5px;left: 0;background: url("/public/images/github-status.png");width: 26px;height: 26px;display: block;margin: 0 5px 0 0}#realtime .up{background-position: 0 0}#realtime .problem{background-position: 0 -53px}#realtime .down{background-position: 0 -26px}.container{max-width: 920px;margin: 0 auto 20px auto}#header{background: #FAFAFA;background: -moz-linear-gradient(#FAFAFA, #EAEAEA);background: -webkit-linear-gradient(#FAFAFA, #EAEAEA);-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#fafafa', endColorstr='#eaeaea')";border-bottom: 1px solid #CACACA;box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4),0 0 10px rgba(0, 0, 0, 0.1)}#markup{padding: 3px}#markup article{padding-top: 30px}.markdown-body{overflow: hidden;font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;font-size: 16px;line-height: 1.6;word-wrap: break-word}.markdown-body>*:first-child{margin-top: 0 !important}.markdown-body>*:last-child{margin-bottom: 0 !important}.markdown-body .absent{color: #c00}.markdown-body .anchor{position: absolute;top: 0;left: 0;display: block;padding-right: 6px;padding-left: 30px;margin-left: -30px}.markdown-body .anchor:focus{outline: none}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{position: relative;margin-top: 1em;margin-bottom: 16px;font-weight: bold;line-height: 1.4}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{display: none;color: #282a3a;vertical-align: middle}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{padding-left: 8px;margin-left: -30px;text-decoration: none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{display: inline-block}.markdown-body h1 tt,.markdown-body h1 code,.markdown-body h2 tt,.markdown-body h2 code,.markdown-body h3 tt,.markdown-body h3 code,.markdown-body h4 tt,.markdown-body h4 code,.markdown-body h5 tt,.markdown-body h5 code,.markdown-body h6 tt,.markdown-body h6 code{font-size: inherit}.markdown-body h1{padding-bottom: 0.3em;font-size: 2.25em;line-height: 1.2;border-bottom: 1px solid #eee}.markdown-body h1 .anchor{line-height: 1}.markdown-body h2{padding-bottom: 0.3em;font-size: 1.75em;line-height: 1.225;border-bottom: 1px solid #eee}.markdown-body h2 .anchor{line-height: 1}.markdown-body h3{font-size: 1.5em;line-height: 1.43}.markdown-body h3 .anchor{line-height: 1.2}.markdown-body h4{font-size: 1.25em}.markdown-body h4 .anchor{line-height: 1.2}.markdown-body h5{font-size: 1em}.markdown-body h5 .anchor{line-height: 1.1}.markdown-body h6{font-size: 1em;color: #777}.markdown-body h6 .anchor{line-height: 1.1}.markdown-body p,.markdown-body blockquote,.markdown-body ul,.markdown-body ol,.markdown-body dl,.markdown-body table,.markdown-body pre{margin-top: 0;margin-bottom: 16px}.markdown-body hr{height: 4px;padding: 0;margin: 16px 0;background-color: #e7e7e7;border: 0 none}.markdown-body ul,.markdown-body ol{padding-left: 2em}.markdown-body ul.no-list,.markdown-body ol.no-list{padding: 0;list-style-type: none}.markdown-body ul ul,.markdown-body ul ol,.markdown-body ol ol,.markdown-body ol ul{margin-top: 0;margin-bottom: 0}.markdown-body li>p{margin-top: 16px}.markdown-body dl{padding: 0}.markdown-body dl dt{padding: 0;margin-top: 16px;font-size: 1em;font-style: italic;font-weight: bold}.markdown-body dl dd{padding: 0 16px;margin-bottom: 16px}.markdown-body blockquote{padding: 0 15px;color: #777;border-left: 4px solid #ddd}.markdown-body blockquote>:first-child{margin-top: 0}.markdown-body blockquote>:last-child{margin-bottom: 0}.markdown-body table{display: block;width: 100%;overflow: auto;word-break: normal;word-break: keep-all}.markdown-body table th{font-weight: bold}.markdown-body table th,.markdown-body table td{padding: 6px 13px;border: 1px solid #ddd}.markdown-body table tr{background-color: #fff;border-top: 1px solid #ccc}.markdown-body table tr:nth-child(2n){background-color: #f8f8f8}.markdown-body img{max-width: 100%;box-sizing: border-box}.markdown-body span.frame{display: block;overflow: hidden}.markdown-body span.frame>span{display: block;float: left;width: auto;padding: 7px;margin: 13px 0 0;overflow: hidden;border: 1px solid #ddd}.markdown-body span.frame span img{display: block;float: left}.markdown-body span.frame span span{display: block;padding: 5px 0 0;clear: both;color: #333}.markdown-body span.align-center{display: block;overflow: hidden;clear: both}.markdown-body span.align-center>span{display: block;margin: 13px auto 0;overflow: hidden;text-align: center}.markdown-body span.align-center span img{margin: 0 auto;text-align: center}.markdown-body span.align-right{display: block;overflow: hidden;clear: both}.markdown-body span.align-right>span{display: block;margin: 13px 0 0;overflow: hidden;text-align: right}.markdown-body span.align-right span img{margin: 0;text-align: right}.markdown-body span.float-left{display: block;float: left;margin-right: 13px;overflow: hidden}.markdown-body span.float-left span{margin: 13px 0 0}.markdown-body span.float-right{display: block;float: right;margin-left: 13px;overflow: hidden}.markdown-body span.float-right>span{display: block;margin: 13px auto 0;overflow: hidden;text-align: right}.markdown-body code,.markdown-body tt{padding: 0;padding-top: 0.2em;padding-bottom: 0.2em;margin: 0;font-size: 85%;background-color: rgba(0,0,0,0.04);border-radius: 3px}.markdown-body code:before,.markdown-body code:after,.markdown-body tt:before,.markdown-body tt:after{letter-spacing: -0.2em;content: "\00a0"}.markdown-body code br,.markdown-body tt br{display: none}.markdown-body del code{text-decoration: inherit}.markdown-body pre>code{padding: 0;margin: 0;font-size: 100%;word-break: normal;white-space: pre;background: transparent;border: 0}.markdown-body .highlight{margin-bottom: 16px}.markdown-body .highlight pre,.markdown-body pre{padding: 16px;overflow: auto;font-size: 85%;line-height: 1.45;background-color: #f7f7f7;border-radius: 3px}.markdown-body .highlight pre{margin-bottom: 0;word-break: normal}.markdown-body pre{word-wrap: normal}.markdown-body pre code,.markdown-body pre tt{display: inline;max-width: initial;padding: 0;margin: 0;overflow: initial;line-height: inherit;word-wrap: normal;background-color: transparent;border: 0}.markdown-body pre code:before,.markdown-body pre code:after,.markdown-body pre tt:before,.markdown-body pre tt:after{content: normal}.markdown-body kbd{display: inline-block;padding: 3px 5px;font-size: 11px;line-height: 10px;color: #555;vertical-align: middle;background-color: #fcfcfc;border: solid 1px #ccc;border-bottom-color: #bbb;border-radius: 3px;box-shadow: inset 0 -1px 0 #bbb}.codehilite{background: #ffffff}.codehilite .c{color: #999988;font-style: italic}.codehilite .err{color: #a61717;background-color: #e3d2d2}.codehilite .k{color: #282a3a;font-weight: bold}.codehilite .o{color: #282a3a;font-weight: bold}.codehilite .cm{color: #999988;font-style: italic}.codehilite .cp{color: #999999;font-weight: bold}.codehilite .c1{color: #999988;font-style: italic}.codehilite .cs{color: #999999;font-weight: bold;font-style: italic}.codehilite .gd{color: #282a3a;background-color: #ffdddd}.codehilite .gd .x{color: #282a3a;background-color: #ffaaaa}.codehilite .ge{color: #282a3a;font-style: italic}.codehilite .gr{color: #aa0000}.codehilite .gh{color: #999999}.codehilite .gi{color: #282a3a;background-color: #ddffdd}.codehilite .gi .x{color: #282a3a;background-color: #aaffaa}.codehilite .go{color: #888888}.codehilite .gp{color: #555555}.codehilite .gs{font-weight: bold}.codehilite .gu{color: #aaaaaa}.codehilite .gt{color: #aa0000}.codehilite .kc{color: #282a3a;font-weight: bold}.codehilite .kd{color: #282a3a;font-weight: bold}.codehilite .kp{color: #282a3a;font-weight: bold}.codehilite .kr{color: #282a3a;font-weight: bold}.codehilite .kt{color: #445588;font-weight: bold}.codehilite .m{color: #009999}.codehilite .s{color: #d14}.codehilite .na{color: #008080}.codehilite .nb{color: #0086B3}.codehilite .nc{color: #445588;font-weight: bold}.codehilite .no{color: #008080}.codehilite .ni{color: #800080}.codehilite .ne{color: #990000;font-weight: bold}.codehilite .nf{color: #990000;font-weight: bold}.codehilite .nn{color: #555555}.codehilite .nt{color: #282a3a080}.codehilite .nv{color: #008080}.codehilite .ow{color: #282a3a;font-weight: bold}.codehilite .w{color: #bbbbbb}.codehilite .mf{color: #009999}.codehilite .mh{color: #009999}.codehilite .mi{color: #009999}.codehilite .mo{color: #009999}.codehilite .sb{color: #d14}.codehilite .sc{color: #d14}.codehilite .sd{color: #d14}.codehilite .s2{color: #d14}.codehilite .se{color: #d14}.codehilite .sh{color: #d14}.codehilite .si{color: #d14}.codehilite .sx{color: #d14}.codehilite .sr{color: #009926}.codehilite .s1{color: #d14}.codehilite .ss{color: #990073}.codehilite .bp{color: #999999}.codehilite .vc{color: #008080}.codehilite .vg{color: #008080}.codehilite .vi{color: #008080}.codehilite .il{color: #009999}
+  </style>
+  <style type="text/css">
+  .markdown-body hr{background:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC")}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="markup">
+      <article id="content" class="markdown-body">
+        <p><center>
+          <title>Linuxの基本操作</title>
+          <h5>第142回 ロボット工学セミナー</h5>
+          <h3>ロボットの作り方<br>
+            ～移動ロボットの制御とROSによる動作計画実習～</h3><br>
+          </center></p>
+
+          <h2>用意するもの</h2>
+          <ul>
+            <li><p>WiFiへの接続が可能なノートパソコンあるいはデスクトップパソコン</p>
+            <p><span style="color: red">本手順によりパソコンの既存のOS（Windows等）及び保存されているデータやソフトウェアは完全に削除されます。予めバックアップを行ってください。</span></p></li>
+            <li>インターネット接続</li>
+            <li>容量4GB以上の空USBメモリ</li>
+            <li>モニター1台</li>
+            <li>キーボード</li>
+            <li>HDMIケーブル</li>
+            <li>マウス</li>
+            <li>容量4GB以上の空SDカード（第142回ロボット工学セミナー経由で実習キットを購入されていない方のみ）</li>
+          </ul>
+
+
+          <h2>リモートPCのセットアップ</h2>
+          <p><span style="color: red">下記の手順に従わず、VirtualBoxやDockerなどの仮想環境をご自分で構築した上でセミナーへの参加もいただけますが、正常動作しない場合への対応はできかねますので自己責任でお願いします。</span></p></li>
+
+          <h3>Ubuntuのダウンロード</h3>
+          <p>下記のリンクからUbuntu 18.04 64bit Desktopのインストールイメージ、<code>ubuntu-18.04.x-desktop-amd64.iso</code>（xはバージョン番号）をダウンロードしてください。</p>
+          <p><a href="http://jp.releases.ubuntu.com/bionic/">Ubuntu 18.04 Bionic</a></p>
+
+          <ul>
+            <li>本セミナーでは、Ubuntu 18.04 64bit Desktop版の使用を想定して説明します。</li>
+            <li>ネットワーク環境によっては、ダウンロードが完了するまで10分ほどかかる場合があります。</li>
+          </ul>
+
+          <p><img src="images/download_ubuntu18.04_0.png" alt="Ubuntu ダウンロード" /></p>
+
+
+          <h3>Ubuntu Install用USBの作成</h3>
+          <ol>
+            <li>下記のURLから、Install用USBの作成ソフトをダウンロードしてください。</li>
+              <ul>
+                <li>WindowsとMac OS Xの場合：<a href="https://unetbootin.github.io/">https://unetbootin.github.io/</a></p>
+                  <p>USB作成に使用しているPCのOSを選択してください。</p>
+                  <p><img src="images/unetbootin_download.png" alt="UNetbootinダウンロード" /></p>
+                </li>
+                <li>Linux（Debian/Ubuntu）の場合：下記のコマンドをターミナルから実行してください。
+                  <div class="codehilite">
+                    <pre><span class="nt">$ sudo add-apt-repository ppa:gezakovacs/ppa</span><br><span class="nt">$ sudo apt-get update</span><br><span class="nt">$ sudo apt-get install unetbootin</span></pre>
+                  </div>
+                  <p>以降の説明は、Windowsを例にして行います。</p>
+                </li>
+              </ul>
+            <li>誤って必要なデータを削除してしまうことを防ぐために、<span style="color: red">使用するUSB以外のメモリ媒体は取り外しておくことをおすすめします。</span>
+              また、使用するUSBメモリはデータが入っていない空の状態にしてください。<br>
+              （インストール用USBを作成するPCとUbuntuをインストールするPCはそれぞれ別のものでも構いません。）
+            </li>
+            <li><p>ダウンロードしたunetbootin-windows-???.exe（Windowsの場合）を実行します。<br>
+              次のように「WindowsによってPCが保護されました」という画面が表示された場合は、「実行」ボタンをクリックしてください。</p>
+              <p><img src="images/windows_idiot_screen.png" alt="Windows UAC" /></p>
+              <p>また、次のようにユーザアカウント制御画面が表示された場合は、「はい」をクリックしてください。</p>
+              <p><img src="images/windows_uac.png" alt="Windows UAC" /></p>
+            </li>
+            <li>
+              <p>UNetbootinの画面で、「ディスクイメージ」を選択し、「...」ボタンをクリックして先ほどダウンロードした<code>ubuntu-18.04.x-desktop-amd64.iso</code>ファイルを選択します。</p>
+              <p>また、「スペースは、リブートしてもファイルを維持するために使用」欄に「4096」と入力し、「ドライブ」欄で、使用するUSBメモリのドライブ名を選択してください。<br>
+              内容を確認後、「OK」をクリックしてください。</p>
+              <p><img src="images/unetbootin_settings.png" alt="UNetbootin settings" /></p>
+              <p>書き込みが完了されるまで、しばらく待機します。<br>
+              USB2.0の場合は10分以上、書き込み速度の遅いUSBメモリだと30分程度かかる場合があります。</p>
+              <p>また、文字が描画されていないウィンドウが表示されることがあるようですが、ウィンドウ右上の「X」ボタンを押して閉じても問題ないようです。</p>
+              <p><img src="images/unetbootin_empty_window.png" alt="UNetbootin empty window" /></p>
+              <p>下記の「永続性を設定する」画面で「応答なし」と表示される場合がありますが、正常に動作していますので、そのまま待機してください。</p>
+              <p><img src="images/unetbootin_may_freeze.png" alt="UNetbootin may freeze" /></p>
+              <p>次の画面が表示されましたら、Install用USBの作成は完了です。<br>
+              終了をクリックしてください。</p>
+              <p><img src="images/unetbootin_complete_bootmemory.png" alt="UNetbootin complete" /></p>
+            </li>
+            <li>
+              <p>Install用USBから起動するためのBIOSの設定を行います。</p>
+              <p>セミナーで使用するPCの電源を切り、下記の手順で作成したInstall用USBを接続した状態で起動します。<br>
+              起動時に、BIOS設定画面に入ります。<br>
+              <span style="color: red">PCのメーカー毎にBIOSへの入り方が異なりますので、マニュアル等で確認してください。</span></p>
+              <p>次からの図は、Acer社のPCのBIOS設定画面を例に説明します。</p>
+              <p><img src="images/acer_boot.png" alt="BIOS 1" /></p>
+              <p>BIOS設定画面に入ったら、起動順（Boot order, Boot priority）の設定で、USBメモリが最優先になるように設定します。<br>
+              <span style="color: red">（画面は使用しているPCおよびUSBメモリのメーカーによって異なります。）</span></p>
+              <p><img src="images/acer_boot_order1.png" alt="BIOS 2" /></p>
+              <p><img src="images/acer_boot_order2.png" alt="BIOS 3" /></p>
+              <p>設定を保存して再起動します。</p>
+              <p><img src="images/acer_boot_save.png" alt="BIOS 4" /></p>
+            </li>
+          </ol>
+
+
+          <h3>Ubuntuのインストール</h3>
+          <ol>
+            <li>Install用USBをパソコンに接続し、パソコンの電源を入れます。</li>
+            <li>"GNU GRUB"のメニューが表示されたら、"Install Ubuntu"を選択します。</li>
+            <li>次の画面で言語を選択し、"続ける"ボタンを押します。その後、キーボードやネットワークに関しても環境に合わせて設定を行ってください。
+              <p><img src="images/ubuntuinst_0_language.png" alt="Ubuntu install 1" /></p>
+            </li>
+            <li>以下の設定では、「通常のインストール」を選択してください。
+              <p><img src="images/ubuntuinst_3_software.png" alt="Ubuntu install 2" /></p>
+            </li>
+            <li>以下の設定では、「ディスクを削除してUbuntuをインストールする」を選択してください。
+              <p><img src="images/ubuntuinst_4_filesystem.png" alt="Ubuntu install 3" /></p>
+            </li>
+            <li>インストール完了後、<span style="color: red">Install用USBを取り外し、未接続の状態でパソコンを再起動する</span>と次の画面が表示されます。
+              <p><img src="images/ubuntuinst_7_desktop.png" alt="Ubuntu install 4" /></p>
+              <p>これでUbuntuのインストールは完了です。</p>
+            </li>
+          </ol>
+
+
+          <h3>ROS Melodicベースパッケージのインストール</h3>
+          <p><img src="images/turtlebot3/remote_pc_and_turtlebot.png" alt="" /></p>
+          <blockquote>
+            <p><strong>注意</strong></p>
+            <p>本章の内容は、TurtleBot3を制御する<code class="language-plaintext highlighter-rouge">リモートPC</code>(Ubuntu18.04がインストールされたデスクトップまたは、ノートパソコン)に対応しています。<span style="color: red"><strong>この手順は、TurtleBot3で実施しないでください。</strong></span></p>
+          </blockquote>
+
+          <p>下記のスクリプトを使用すると、ROS Melodic(ROS)のインストール手順を簡略化できます。<br>
+            ターミナルウィンドウでこのスクリプトを実行します。<br>
+            ターミナルアプリケーションは、画面の左上隅にあるUbuntu検索アイコンから起動できます。<br>
+            もしくは、ターミナルのショートカットキー<code class="language-plaintext highlighter-rouge">Ctrl+Alt+t</code>を使用して起動できます。<br>
+            ROSをインストールした後、リモートPCを再起動してください。</p>
+          <p><strong><code class="language-plaintext highlighter-rouge">【リモートPCで実施】</code></strong></p>
+          <div class="codehilite">
+            <pre><span class="nt">$ sudo apt-get update</span><br><span class="nt">$ sudo apt-get upgrade</span><br><span class="nt">$ wget https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_tools/master/install_ros_melodic.sh</span><br><span class="nt">$ chmod 755 ./install_ros_melodic.sh</span><br><span class="nt">$ bash ./install_ros_melodic.sh</span></pre>
+          </div>
+
+          <p><strong>注釈</strong>: インストールされるパッケージを確認するには、次のリンクを確認してください。</p>
+          <p><a href="https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_tools/master/install_ros_melodic.sh">install_ros_melodic.sh</a></p>
+          <p>上記のインストールが失敗した場合、以下を参考にしてください。</p>
+          <p><a href="http://wiki.ros.org/melodic/Installation/Ubuntu">公式ROS1Melodicインストールガイド</a></p>
+
+
+          <h3>ROS依存パッケージのインストール</h3>
+          <p>リモートPCにROS依存パッケージをインストールする手順です。</p>
+          <p><strong><code class="language-plaintext highlighter-rouge">【リモートPCで実施】</code></strong></p>
+          <div class="codehilite">
+            <pre><span class="nt">$ sudo apt-get install ros-melodic-joy ros-melodic-teleop-twist-joy \</span><br><span class="nt">  ros-melodic-teleop-twist-keyboard ros-melodic-laser-proc \</span><br><span class="nt">  ros-melodic-rgbd-launch ros-melodic-depthimage-to-laserscan \</span><br><span class="nt">  ros-melodic-rosserial-arduino ros-melodic-rosserial-python \</span><br><span class="nt">  ros-melodic-rosserial-server ros-melodic-rosserial-client \</span><br><span class="nt">  ros-melodic-rosserial-msgs ros-melodic-amcl ros-melodic-map-server \</span><br><span class="nt">  ros-melodic-move-base ros-melodic-urdf ros-melodic-xacro \</span><br><span class="nt">  ros-melodic-compressed-image-transport ros-melodic-rqt* \</span><br><span class="nt">  ros-melodic-gmapping ros-melodic-navigation ros-melodic-interactive-markers</span></pre>
+          </div>
+
+          <p>リモートPCにTurtleBot3を制御するための依存パッケージをインストールする手順です。</p>
+          <p><strong><code class="language-plaintext highlighter-rouge">【リモートPCで実施】</code></strong></p>
+          <div class="codehilite">
+            <pre><span class="nt">$ sudo apt-get install ros-melodic-dynamixel-sdk</span><br><span class="nt">$ sudo apt-get install ros-melodic-turtlebot3</span><br><span class="nt">$ sudo apt-get install ros-melodic-turtlebot3-gazebo</span></pre>
+          </div>
+
+
+          <h3>TurtleBot3のモデル名の設定</h3>
+          <p>環境変数<code>TURTLEBOT3_MODEL</code>モデルにデフォルト名を設定します。以下のコマンドを端末に入力し、環境変数の設定と反映を行います。</p>
+          <div class="codehilite">
+            <pre><span class="nt">$ echo "export TURTLEBOT3_MODEL=burger" >> ~/.bashrc</span><br><span class="nt">$ source ~/.bashrc</span></pre>
+          </div>
+          <p><code>catkin_make</code>次に、コマンドへのパスが通っていることを確認します。<br>
+            以下のコマンドを実行後、<code>/opt/ros/melodic/bin/catkin_make</code>といったパスが表示されれば、正しく設定できていることになります。</p>
+          <p><strong><code>【リモートPCで実施】</code></strong></p>
+          <div class="codehilite">
+            <pre><span class="nt">$ which catkin_make</span></pre>
+          </div>
+          <p>何も表示されない場合、環境変数設定に不備が考えられるため、以下のコマンドを再実行してください。</p>
+          <p><strong><code>【リモートPCで実施】</code></strong></p>
+          <div class="codehilite">
+            <pre><span class="nt">$ source ~/.bashrc</span></pre>
+          </div>
+
+
+          <p><a id="remotepc_wifi_settings"></a></p>
+          <h3>ネットワーク構成</h3>
+          <p><img src="images/turtlebot3/network_configuration.png" alt="" /></p>
+          <p>TurtleBot PCとリモートPCの間で通信をするためにIPアドレスが必要です。<span style="color: red"><strong>リモートPCとTurtleBot PCは、同じwifiルーターに接続する必要があります。</strong></span></p>
+          <p>リモートPCのターミナルに次のコマンドを入力し、IPアドレスを確認します。</p>
+          <p><strong><code>【リモートPCで実施】</code></strong></p>
+          <div class="codehilite">
+            <pre><span class="nt">$ ip address show</span></pre>
+          </div>
+          <p>赤枠部分が、<code>リモートPC</code>のIPアドレスです。<br>
+            (環境によってIPアドレスが異なる場合があります。また、"/24"の部分は含みません。)</p>
+          <p><img src="images/rosset_0_ip.png" alt="" /></p>
+          <p>以下のコマンドを入力し、~/.bashrcを開きます。</p>
+          <p><strong><code>【リモートPCで実施】</code></strong></p>
+          <div class="codehilite">
+            <pre><span class="nt">$ nano ~/.bashrc</span></pre>
+          </div>
+          <p><code>Alt + /</code> を入力するとファイルの最終行へ移動します。</p>
+          <p><code>ROS_MASTER_URI</code>と<code>ROS_HOSTNAME</code>の<code>localhost</code>のIPアドレスを、上記のターミナルウィンドウから取得したIPアドレスに変更します。(下図、赤枠部分)</p>
+          <p><img src="images/rosset_1_env.png" alt="" /></p>
+          <p>修正後、ファイルを保存(<code>Ctrl + s</code> → <code>enter</code>)し、編集を終了（<code>Ctrl + x</code>）します。<br>
+          次に、以下のコマンドでbashrcを実行します。</p>
+          <p><strong><code>【リモートPCで実施】</code></strong></p>
+          <div class="codehilite">
+            <pre><span class="nt">$ source ~/.bashrc</span></pre>
+          </div>
+          <p>以上でリモートPCの開発環境構築は完了です。</p>
+
+          <br><br><br>
+
+          <h2>TurtleBot側のRaspberry Piのセットアップ</h2>
+          <blockquote>
+            <p><strong>警告</strong></p>
+            <ul>
+              <li>この章の内容は、<strong>TurtleBot3 Burger</strong>の制御コンピューターとなる <code class="language-plaintext highlighter-rouge">Raspberry Pi)</code>に対応しています。<span style="color: red"><strong>本項の設定内容をリモートPC（デスクトップPCまたは、ノートパソコン）で実施しないでください。</strong></span></li>
+              <li>セットアップ作業には、電源と時間が必要なためバッテリーは適していません。この作業では、SMPS(ACアダプタ)の使用を推奨します。</li>
+            </ul>
+          </blockquote>
+
+          <p>第142回ロボット工学セミナー経由で実習キットを購入された方は、付属のSDカードに適切なイメージが記録されているので、下の<a href="#tb3_wifi_settings">WiFiネットワーク設定を構成する</a>から実施ください。
+            また、<a href="https://e-shop.robotis.co.jp/page/tb3_rsj_s142">TurtleBot3 Burger RSJ工学セミナー S142クイックスタートページ</a>もあわせて御覧ください。</p>
+
+          <p>もし、お持ちのTurtleBot3 BurgerにROS Melodicがインストールされていない場合、<a href="https://emanual.robotis.com/docs/en/platform/turtlebot3/sbc_setup/#sbc-setup">こちら</a>より、Raspberry PiにROS Melodicのインストールを実施する必要があります。<br>
+            画面上部のROSバージョン選択箇所において、’Melodic’を選択ください。<br>
+            3.2.1 "microSDカードとリーダーを準備する"から、3.2.4.2 "ディスクユーティリティ" まで実施してください。</p>
+
+
+          <!-- ページ内リンクのおまじない -->
+          <p><a id="tb3_wifi_settings"></a></p>
+          <h3 id="wifiネットワーク設定を構成する">WiFiネットワーク設定を構成する</h3>
+          <ol>
+            <li><p>TurtleBotの制御コンピュータであるRaspberry Pi（以下、SBC）を起動します。<br>
+              以下の手順で、SBCを起動し、ログインしてください。</p>
+              <ul>
+                <li>キーボードをSBCのUSBポートに接続します。</li>
+                <li>SBC用起動イメージが格納されたmicroSDカードを、SBCに挿入します。SBCに電力を供給する前に、HDMIケーブルを接続する必要があります。接続しないと、SBCのHDMIポートが無効になります。</li>
+                <li>電源を接続して、SBCをパワーオンします。</li>
+                <li>アカウント"ubuntu"、パスワード"turtlebot"でログインします。</li>
+              </ul>
+            </li>
+            <li><p>WiFiの設定ファイルを修正します。下記のコマンドを入力してください。</p>
+              <p><strong><code>【SBCで実施】</code></strong></p>
+              <div class="codehilite">
+                <pre><span class="nt">$ cd /etc/netplan</span><br><span class="nt">$ sudo nano 50-cloud-init.yaml</span></pre>
+              </div>
+              <p>エディターが開いたら、<code>WIFI_SSID</code>と<code>WIFI_PASSWORD</code>をWi-FiSSIDとパスワードに置き換えます。（下イメージ緑文字部分）</p>
+              <p><img src="images/wifi_settings.png" alt="" /></p>
+              <p>修正後、ファイルを保存(<code>Ctrl + s</code> → <code>enter</code>)し、編集を終了（<code>Ctrl + x</code>）します。<br>
+                下記のコマンドを入力して、SBCを再起動してください。</p>
+              <p><strong><code>【SBCで実施】</code></strong></p>
+              <div class="codehilite">
+                <pre><span class="nt">$ sudo reboot</span></pre>
+              </div>
+            </li>
+          </ol>
+
+
+          <h3 id="rosのネットワーク設定">ROSのネットワーク設定</h3>
+          <p>SBCの再起動後、リモートPCのセットアップと同様（<a href="#remotepc_wifi_settings">参照</a>）にSBCのIPアドレスを調べる（<code>wlan0</code>の箇所）。</p>
+          <p><strong><code>【SBCで実施】</code></strong></p>
+          <div class="codehilite">
+            <pre><span class="nt">$ ip address show</span></pre>
+          </div>
+          <p>エディタにて<code>~/.bashrc</code>を開きます。</p>
+          <p><strong><code>【SBCで実施】</code></strong></p>
+          <div class="codehilite">
+            <pre><span class="nt">$ nano ~/.bashrc</span></pre>
+          </div>
+          <p>下図のように、環境変数<code>ROS_MASTER_URI</code>と<code>ROS_HOSTNAME</code>のIPアドレスを、それぞれリモートPCのIPアドレスとSBCから取得したIPアドレスに変更します。</p>
+          <p><img src="images/wifi_ros_env.png" alt="" /></p>
+          <p>修正後、ファイルを保存（<code>Ctrl + s</code> → <code>enter</code>）し、編集を終了（<code>Ctrl + x</code>）します。</p>
+          <p>さきほど修正した設定を反映するため、<strong>~/.bashrcを編集したターミナルにて、</strong> 以下を実行します。<br>
+          （~/.bashrcの修正により、今後、新規にターミナルを開いた時は自動で設定が反映されます）</p>
+          <p><strong><code>【SBCで実施】</code></strong></p>
+          <div class="codehilite">
+            <pre><span class="nt">$ source ~/.bashrc</span></pre>
+          </div>
+
+
+          <h3>リモートPCからSBCへの接続方法</h3>
+          <p>ワイヤレス構成が完了したら、デスクトップまたはノートパソコンからSSH経由でSBCに接続できます。<br>
+          まずは、リモートPCとSBCでSSHをインストールします。<br>
+          SBCにログイン後、以下を実行してください。</p>
+          <p><strong><code>【SBCで実施】</code></strong></p>
+          <div class="codehilite">
+            <pre><span class="nt">$ sudo apt-get install ssh</span></pre>
+          </div>
+          <p>SBCでSSHを有効にします。</p>
+          <p><strong><code>【SBCで実施】</code></strong></p>
+          <div class="codehilite">
+            <pre><span class="nt">$ sudo service ssh start</span><br><span class="nt">$ sudo ufw allow ssh</span></pre>
+          </div>
+          <p>次に、リモートPCからSBCに接続します。リモートPCにログインし、次のコマンドを入力してください。</p>
+          <p><strong><code>【リモートPCで実施】</code></strong></p>
+          <div class="codehilite">
+            <pre><span class="nt">$ ssh ubuntu@192.168.YY.YY（@のあとはSBCのIPアドレス）</span></pre>
+          </div>
+          <p>パスワードの入力を求められたら、<code>turtlebot</code>を入力してください。<br>
+            また、初めて接続する場合、接続を継続するかを聞かれますので、<code>yes</code>を入力してください。</p>
+          <p>もし、接続ができない場合には、下記の事項を確認してみてください。</p>
+          <ul>
+            <li>sshで指定しているIPアドレス、アカウント、パスワードに誤りがないか</li>
+            <li>リモートPCとSBCを同じwifiルーターに接続しているか</li>
+          </ul>
+          <p><span style="color: red">ネットワーク接続はセミナー参加者の皆様の環境に大きく依存しますので、ネットワークに接続できない、という旨の質問をいただいても回答が困難な場合が多いです。所属組織のネットワーク管理者の方に相談するなど、事前によくご確認ください。</span></p>
+          <p>以上で事前準備は完了です。<br>お疲れ様でした。</p>
+
+          <br><br><br>
+
+          <h2>ご参考</h2>
+          <p>昨年度の” ロボットの作り方セミナー”にて、発生した問題についてまとめたテキストは以下になります。ロボットが正常に動作しない場合に参考になさってください。</p>
+          <div class="codehilite">
+            <pre>RSJロボット工学セミナー 第131回 レポート
+
+Issue
+ロボットとPCが通信できない。(ロボットが動作しない)
+1. ROS_MASTER_URI、ROS_HOSTNAME(ROS_IP)が間違っている。
+解決方法：適切な値に変更する。
+
+2. 同一ネットワーク上にノードがない。(VMを使用した時に発生しやすい)
+解決方法：同一ネットワーク上に配置する。
+
+3. USBが断線している
+解決方法：USBケーブルを挿し直す。OpenCRとRaspberryPiのUSBが抜けている事が多かった。
+
+4. OpenCRのセットアップが終わっていない
+解決方法：以下の手順を再度やり直す。
+
+https://emanual.robotis.com/docs/en/platform/turtlebot3/opencr_setup/#opencr-setup
+
+5. Dynamixelのケーブルが断線している
+解決方法：ケーブルを挿し直す。
+
+6. DYNAMIXELがブート(LEDは点灯)しているが動作しない。
+解決方法：DYNAMIXEL Wizrd2.0を使用して再設定する。
+
+※根本的な原因は不明だが、OpenCRのスイッチを押してDYNAMXIELの動作確認をする時にまれに変更される場合がある。
+
+7. シミュレーションが動作しない
+解決方法：初回起動で時間がかかっている場合が多い。
+
+8. ビルドエラーが起きる。
+解決方法：必要なパッケージがインストールされていない。
+
+セットアップ手順をやり直す。
+
+https://emanual.robotis.com/docs/en/platform/turtlebot3/quick-start/#pc-setup
+
+もしくはrosdepを使って依存関係を解決する。
+
+$ sudo apt-get install python-rosdep
+$ rosdep init
+$ rosdep update
+$ rosdep install -i --from-paths path-to-ros-package
+9. ノードを起動するとエラーが起きる。
+解決方法：必要なパッケージがインストールされていない。
+
+セットアップ手順をやり直す。
+
+https://emanual.robotis.com/docs/en/platform/turtlebot3/quick-start/#pc-setup
+
+もしくはrosdepを使って依存関係を解決する。
+
+$ sudo apt-get install python-rosdep
+$ rosdep init
+$ rosdep update
+$ rosdep install -i --from-paths path-to-ros-package
+10. テレオペコマンドで前後逆に動作する。
+解決方法：DYNAMIXELが左右逆に取り付けられているため、ハードウェアを組み直す。
+
+https://emanual.robotis.com/docs/en/platform/turtlebot3/hardware_setup/#hardware-assembly
+
+11. ノードは起動するが動作しない。
+解決方法：PCとロボットの時刻がずれている。
+
+ntpdateを使って同期する。
+
+$ sudo apt-get install ntpdate
+$ sudo ntpdate ntp.ubuntu.com
+手動の場合は以下のコマンドで設定する。
+
+$ date -s "01/22 13:00:00 2021"
+12. ロボットモデルが読み込まれない。
+解決方法：ロボットモデルの設定を読み込み直す。
+
+$ export TURTLEBOT3_MODEL=burger
+13. ネットワークの設定はあっているが動作しない
+解決方法：.bashrcを読み込み直す。
+
+$ source ~/.bashrc
+※.bashrcは、ターミナルの起動時に読み込まれるので変更してから読み込み直さないと適応されない。
+
+14. ROSのコマンドが使えない。
+解決方法：ROSの環境設定を再度実施する。
+
+$ source /opt/ros/&lt;distro&gt;/setup.bash
+</pre>
+          </div>
+
+          <br><br><br>
+
+          <h2>連絡先</h2>
+          <p>woo_at_cc.kogakuin.ac.jp</p>
+
+
+
+                </article>
+              </div>
+            </div>
+          </body>
+          </html>
