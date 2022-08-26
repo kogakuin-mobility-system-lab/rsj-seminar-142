@@ -88,7 +88,7 @@
 
           <p><strong><code class="language-plaintext highlighter-rouge">【リモートPCで実施】</code></strong></p>
           <div class="codehilite">
-            <pre><span class="nt">$ <span style="color:red">cd ~/catkin_ws/src</span><br>$ <span style="color:red">git clone https://github.com/garcia-g/rsj_seminar_no139_ros_basics.git</span><br>$ <span style="color:red">ls</span><br>CMakeLists.txt   rsj_seminar_no139_ros_basics<br>$ </pre>
+            <pre><span class="nt">$ <span style="color:red">cd ~/catkin_ws/src</span><br>$ <span style="color:red">git clone https://github.com/rsj_seminar_no142_ros_basics.git</span><br>$ <span style="color:red">ls</span><br>CMakeLists.txt   rsj_seminar_no142_ros_basics<br>$ </pre>
           </div>
 
           <p>gitは、ソースコードなどの変更履歴を記録して管理する分散型バージョン管理システムと呼ばれるものです。<br>
@@ -107,13 +107,13 @@
 
           <p><strong><code class="language-plaintext highlighter-rouge">【リモートPCで実施】</code></strong></p>
           <div class="codehilite">
-            <pre><span class="nt">$ <span style="color:red">cd ~/catkin_ws/src/rsj_seminar_no139_ros_basics/</span><br>$ <span style="color:red">ls</span><br>CMakeLists.txt   LICENSE   launch   msg   package.xml   src<br>$ <span style="color:red">ls launch/</span><br>test.launch<br>$ <span style="color:red">ls msg/</span><br>Text.msg<br>$ <span style="color:red">ls src/</span><br>Publish.cpp   Show.cpp<br>$</pre>
+            <pre><span class="nt">$ <span style="color:red">cd ~/catkin_ws/src/rsj_seminar_no142_ros_basics/</span><br>$ <span style="color:red">ls</span><br>CMakeLists.txt   LICENSE   launch   msg   package.xml   src<br>$ <span style="color:red">ls launch/</span><br>test.launch<br>$ <span style="color:red">ls msg/</span><br>Text.msg<br>$ <span style="color:red">ls src/</span><br>Publish.cpp   Show.cpp<br>$</pre>
           </div>
 
           <p><code class="language-plaintext highlighter-rouge">CMakeLists.txt</code>と<code class="language-plaintext highlighter-rouge">package.xml</code>には、使っているライブラリの一覧や生成する実行ファイルとC++のソースコードの対応など、このパッケージをビルドするために必要な情報が書かれています。<br>
             <code class="language-plaintext highlighter-rouge">launch</code>ディレクトリには、複数のノードでできたシステムの定義が、<code class="language-plaintext highlighter-rouge">msg</code>ディレクトリには、このパッケージ独自のデータ形式の定義が、<code class="language-plaintext highlighter-rouge">src</code>ディレクトリには、このパッケージに含まれるプログラム(ノード)のソースコードが含まれています。</p>
 
-          <p><code class="language-plaintext highlighter-rouge">catkin_make</code>コマンドで、ダウンロードした<code class="language-plaintext highlighter-rouge">rsj_seminar_no139_ros_basics</code>パッケージを含む、ワークスペース全体をビルドします。<code class="language-plaintext highlighter-rouge">catkin_make</code>は、ワークスペースの最上位ディレクトリ(<code class="language-plaintext highlighter-rouge">~/catkin_ws/</code>)で行います。</p>
+          <p><code class="language-plaintext highlighter-rouge">catkin_make</code>コマンドで、ダウンロードした<code class="language-plaintext highlighter-rouge">rsj_seminar_no142_ros_basics</code>パッケージを含む、ワークスペース全体をビルドします。<code class="language-plaintext highlighter-rouge">catkin_make</code>は、ワークスペースの最上位ディレクトリ(<code class="language-plaintext highlighter-rouge">~/catkin_ws/</code>)で行います。</p>
 
           <br>
 
@@ -123,13 +123,13 @@
 
           <p><strong><code class="language-plaintext highlighter-rouge">【リモートPCで実施】</code></strong></p>
           <div class="codehilite">
-            <pre><span class="nt">$ <span style="color:red">cd ~/catkin_ws/src/</span><br>$ <span style="color:red">ls</span><br>CMakeLists.txt   rsj_seminar_no139_ros_basics<br>$ <span style="color:red">cd ..</span><br>$</pre>
+            <pre><span class="nt">$ <span style="color:red">cd ~/catkin_ws/src/</span><br>$ <span style="color:red">ls</span><br>CMakeLists.txt   rsj_seminar_no142_ros_basics<br>$ <span style="color:red">cd ..</span><br>$</pre>
           </div>
 
           <p>ソースファイルの編集にはお好みのテキストエディタが利用可能です。<br>
             Linuxでのプログラム開発がはじめての方には、Ubuntuにデフォルトでインストールされている<code class="language-plaintext highlighter-rouge">gedit</code>がおすすめです。プログラミング作業が多い方には<a href="https://azure.microsoft.com/ja-jp/products/visual-studio-code/"><code class="language-plaintext highlighter-rouge">Visual Studio Code</code></a>がおすすめです。</p>
 
-          <p><strong><em>お好みのテキストエディタで <code class="language-plaintext highlighter-rouge">~/catkin_ws/src/rsj_seminar_no139_ros_basics/src/Publish.cpp</code> を開きます。</em></strong></p>
+          <p><strong><em>お好みのテキストエディタで <code class="language-plaintext highlighter-rouge">~/catkin_ws/src/rsj_seminar_no142_ros_basics/src/Publish.cpp</code> を開きます。</em></strong></p>
 
           <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
@@ -164,7 +164,7 @@
 31
 32
 </pre></td><td class="rouge-code"><pre><span class="cp">#include &lt;ros/ros.h&gt;
-#include &lt;rsj_seminar_no139_ros_basics/Text.h&gt;
+#include &lt;rsj_seminar_no142_ros_basics/Text.h&gt;
 </span>
 <span class="cp">#include &lt;string&gt;
 </span>
@@ -177,7 +177,7 @@
   <span class="n">ros</span><span class="o">::</span><span class="n">param</span><span class="o">::</span><span class="n">param</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"~message"</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="s">"test seminar 2022"</span><span class="p">);</span>
   <span class="n">ros</span><span class="o">::</span><span class="n">param</span><span class="o">::</span><span class="n">param</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"~date"</span><span class="p">,</span> <span class="n">date</span><span class="p">,</span> <span class="s">"January 29"</span><span class="p">);</span>
 
-  <span class="n">ros</span><span class="o">::</span><span class="n">Publisher</span> <span class="n">pub</span> <span class="o">=</span> <span class="n">node</span><span class="p">.</span><span class="n">advertise</span><span class="o">&lt;</span><span class="n">rsj_seminar_no139_ros_basics</span><span class="o">::</span><span class="n">Text</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"Publish"</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+  <span class="n">ros</span><span class="o">::</span><span class="n">Publisher</span> <span class="n">pub</span> <span class="o">=</span> <span class="n">node</span><span class="p">.</span><span class="n">advertise</span><span class="o">&lt;</span><span class="n">rsj_seminar_no142_ros_basics</span><span class="o">::</span><span class="n">Text</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"Publish"</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
 
   <span class="n">ros</span><span class="o">::</span><span class="n">Rate</span> <span class="n">rate</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
 
@@ -185,7 +185,7 @@
     <span class="n">ros</span><span class="o">::</span><span class="n">spinOnce</span><span class="p">();</span>
 
     <span class="n">ROS_INFO</span><span class="p">(</span><span class="s">"Publishing message '%s %s'"</span><span class="p">,</span> <span class="n">message</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span> <span class="n">date</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
-    <span class="n">rsj_seminar_no139_ros_basics</span><span class="o">::</span><span class="n">Text</span> <span class="n">sample</span><span class="p">;</span>
+    <span class="n">rsj_seminar_no142_ros_basics</span><span class="o">::</span><span class="n">Text</span> <span class="n">sample</span><span class="p">;</span>
     <span class="n">sample</span><span class="p">.</span><span class="n">message</span> <span class="o">=</span> <span class="n">message</span><span class="p">;</span>
     <span class="n">sample</span><span class="p">.</span><span class="n">date</span> <span class="o">=</span> <span class="n">date</span><span class="p">;</span>
     <span class="n">pub</span><span class="p">.</span><span class="n">publish</span><span class="p">(</span><span class="n">sample</span><span class="p">);</span>
@@ -208,7 +208,7 @@
 
           <p>続いて、本ノードが利用するメッセージのヘッダファイルをインクルードしています。</p>
           <div class="codehilite">
-            <pre><span class="nt">#include &lt;rsj_seminar_no139_ros_basics/Text.h&gt;</span></pre>
+            <pre><span class="nt">#include &lt;rsj_seminar_no142_ros_basics/Text.h&gt;</span></pre>
           </div>
 
           <p><code>std::string</code>が利用されるので、ヘッダファイルをインクルードします。</p>
