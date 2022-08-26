@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>ROSの基本操作</title>
+  <style type="text/css">
+  html{font-family: sans-serif;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%}body{margin: 0}article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display: block}audio,canvas,progress,video{display: inline-block;vertical-align: baseline}audio:not([controls]){display: none;height: 0}[hidden],template{display: none}a{background: transparent}a:active,a:hover{outline: 0}abbr[title]{border-bottom: 1px dotted}b,strong{font-weight: bold}dfn{font-style: italic}h1{font-size: 2em;margin: 0.67em 0}mark{background: #ff0;color: #282a3a}small{font-size: 80%}sub,sup{font-size: 75%;line-height: 0;position: relative;vertical-align: baseline}sup{top: -0.5em}sub{bottom: -0.25em}img{border: 0}svg:not(:root){overflow: hidden}figure{margin: 1em 40px}hr{box-sizing: content-box;height: 0}pre{overflow: auto}code,kbd,pre,samp{font-family: monospace, monospace;font-size: 1em}button,input,optgroup,select,textarea{color: inherit;font: inherit;margin: 0}button{overflow: visible}button,select{text-transform: none}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance: button;cursor: pointer}button[disabled],html input[disabled]{cursor: default}button::-moz-focus-inner,input::-moz-focus-inner{border: 0;padding: 0}input{line-height: normal}input[type="checkbox"],input[type="radio"]{box-sizing: border-box;padding: 0}input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{height: auto}input[type="search"]{-webkit-appearance: textfield;box-sizing: content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance: none}fieldset{border: 1px solid #c0c0c0;margin: 0 2px;padding: 0.35em 0.625em 0.75em}legend{border: 0;padding: 0}textarea{overflow: auto}optgroup{font-weight: bold}table{border-collapse: collapse;border-spacing: 0}td,th{padding: 0}*{box-sizing: border-box}input,select,textarea,button{font: 13px/1.4 Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"}body{min-width: 1020px;font: 13px/1.4 Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";color: #282a3a;background-color: #fff}a{color: #4183c4;text-decoration: none}a:hover,a:active{text-decoration: underline}hr,.rule{height: 0;margin: 15px 0;overflow: hidden;background: transparent;border: 0;border-bottom: 1px solid #ddd}hr:before,.rule:before{display: table;content: ""}hr:after,.rule:after{display: table;clear: both;content: ""}h1,h2,h3,h4,h5,h6{margin-top: 15px;margin-bottom: 15px;line-height: 1.1}h1{font-size: 30px}h2{font-size: 21px}h3{font-size: 16px}h4{font-size: 14px}h5{font-size: 12px}h6{font-size: 11px}small{font-size: 90%}blockquote{margin: 0}.lead{margin-bottom: 30px;font-size: 20px;font-weight: 300;color: #555}.text-muted{color: #999}.text-danger{color: #bd2c00}.text-emphasized{font-weight: bold;color: #333}ul,ol{padding: 0;margin-top: 0;margin-bottom: 0}ol ol,ul ol{list-style-type: lower-roman}ul ul ol,ul ol ol,ol ul ol,ol ol ol{list-style-type: lower-alpha}dd{margin-left: 0}tt,code{font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;font-size: 12px}pre{margin-top: 0;margin-bottom: 0;font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace}#realtime .status{overflow: visible;position: absolute;top: -5px;left: 0;background: url("/public/images/github-status.png");width: 26px;height: 26px;display: block;margin: 0 5px 0 0}#realtime .up{background-position: 0 0}#realtime .problem{background-position: 0 -53px}#realtime .down{background-position: 0 -26px}.container{max-width: 920px;margin: 0 auto 20px auto}#header{background: #FAFAFA;background: -moz-linear-gradient(#FAFAFA, #EAEAEA);background: -webkit-linear-gradient(#FAFAFA, #EAEAEA);-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#fafafa', endColorstr='#eaeaea')";border-bottom: 1px solid #CACACA;box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4),0 0 10px rgba(0, 0, 0, 0.1)}#markup{padding: 3px}#markup article{padding-top: 30px}.markdown-body{overflow: hidden;font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;font-size: 16px;line-height: 1.6;word-wrap: break-word}.markdown-body>*:first-child{margin-top: 0 !important}.markdown-body>*:last-child{margin-bottom: 0 !important}.markdown-body .absent{color: #c00}.markdown-body .anchor{position: absolute;top: 0;left: 0;display: block;padding-right: 6px;padding-left: 30px;margin-left: -30px}.markdown-body .anchor:focus{outline: none}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{position: relative;margin-top: 1em;margin-bottom: 16px;font-weight: bold;line-height: 1.4}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{display: none;color: #282a3a;vertical-align: middle}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{padding-left: 8px;margin-left: -30px;text-decoration: none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{display: inline-block}.markdown-body h1 tt,.markdown-body h1 code,.markdown-body h2 tt,.markdown-body h2 code,.markdown-body h3 tt,.markdown-body h3 code,.markdown-body h4 tt,.markdown-body h4 code,.markdown-body h5 tt,.markdown-body h5 code,.markdown-body h6 tt,.markdown-body h6 code{font-size: inherit}.markdown-body h1{padding-bottom: 0.3em;font-size: 2.25em;line-height: 1.2;border-bottom: 1px solid #eee}.markdown-body h1 .anchor{line-height: 1}.markdown-body h2{padding-bottom: 0.3em;font-size: 1.75em;line-height: 1.225;border-bottom: 1px solid #eee}.markdown-body h2 .anchor{line-height: 1}.markdown-body h3{font-size: 1.5em;line-height: 1.43}.markdown-body h3 .anchor{line-height: 1.2}.markdown-body h4{font-size: 1.25em}.markdown-body h4 .anchor{line-height: 1.2}.markdown-body h5{font-size: 1em}.markdown-body h5 .anchor{line-height: 1.1}.markdown-body h6{font-size: 1em;color: #777}.markdown-body h6 .anchor{line-height: 1.1}.markdown-body p,.markdown-body blockquote,.markdown-body ul,.markdown-body ol,.markdown-body dl,.markdown-body table,.markdown-body pre{margin-top: 0;margin-bottom: 16px}.markdown-body hr{height: 4px;padding: 0;margin: 16px 0;background-color: #e7e7e7;border: 0 none}.markdown-body ul,.markdown-body ol{padding-left: 2em}.markdown-body ul.no-list,.markdown-body ol.no-list{padding: 0;list-style-type: none}.markdown-body ul ul,.markdown-body ul ol,.markdown-body ol ol,.markdown-body ol ul{margin-top: 0;margin-bottom: 0}.markdown-body li>p{margin-top: 16px}.markdown-body dl{padding: 0}.markdown-body dl dt{padding: 0;margin-top: 16px;font-size: 1em;font-style: italic;font-weight: bold}.markdown-body dl dd{padding: 0 16px;margin-bottom: 16px}.markdown-body blockquote{padding: 0 15px;color: #777;border-left: 4px solid #ddd}.markdown-body blockquote>:first-child{margin-top: 0}.markdown-body blockquote>:last-child{margin-bottom: 0}.markdown-body table{display: block;width: 100%;overflow: auto;word-break: normal;word-break: keep-all}.markdown-body table th{font-weight: bold}.markdown-body table th,.markdown-body table td{padding: 6px 13px;border: 1px solid #ddd}.markdown-body table tr{background-color: #fff;border-top: 1px solid #ccc}.markdown-body table tr:nth-child(2n){background-color: #f8f8f8}.markdown-body img{max-width: 100%;box-sizing: border-box}.markdown-body span.frame{display: block;overflow: hidden}.markdown-body span.frame>span{display: block;float: left;width: auto;padding: 7px;margin: 13px 0 0;overflow: hidden;border: 1px solid #ddd}.markdown-body span.frame span img{display: block;float: left}.markdown-body span.frame span span{display: block;padding: 5px 0 0;clear: both;color: #333}.markdown-body span.align-center{display: block;overflow: hidden;clear: both}.markdown-body span.align-center>span{display: block;margin: 13px auto 0;overflow: hidden;text-align: center}.markdown-body span.align-center span img{margin: 0 auto;text-align: center}.markdown-body span.align-right{display: block;overflow: hidden;clear: both}.markdown-body span.align-right>span{display: block;margin: 13px 0 0;overflow: hidden;text-align: right}.markdown-body span.align-right span img{margin: 0;text-align: right}.markdown-body span.float-left{display: block;float: left;margin-right: 13px;overflow: hidden}.markdown-body span.float-left span{margin: 13px 0 0}.markdown-body span.float-right{display: block;float: right;margin-left: 13px;overflow: hidden}.markdown-body span.float-right>span{display: block;margin: 13px auto 0;overflow: hidden;text-align: right}.markdown-body code,.markdown-body tt{padding: 0;padding-top: 0.2em;padding-bottom: 0.2em;margin: 0;font-size: 85%;background-color: rgba(0,0,0,0.04);border-radius: 3px}.markdown-body code:before,.markdown-body code:after,.markdown-body tt:before,.markdown-body tt:after{letter-spacing: -0.2em;content: "\00a0"}.markdown-body code br,.markdown-body tt br{display: none}.markdown-body del code{text-decoration: inherit}.markdown-body pre>code{padding: 0;margin: 0;font-size: 100%;word-break: normal;white-space: pre;background: transparent;border: 0}.markdown-body .highlight{margin-bottom: 16px}.markdown-body .highlight pre,.markdown-body pre{padding: 16px;overflow: auto;font-size: 85%;line-height: 1.45;background-color: #f7f7f7;border-radius: 3px}.markdown-body .highlight pre{margin-bottom: 0;word-break: normal}.markdown-body pre{word-wrap: normal}.markdown-body pre code,.markdown-body pre tt{display: inline;max-width: initial;padding: 0;margin: 0;overflow: initial;line-height: inherit;word-wrap: normal;background-color: transparent;border: 0}.markdown-body pre code:before,.markdown-body pre code:after,.markdown-body pre tt:before,.markdown-body pre tt:after{content: normal}.markdown-body kbd{display: inline-block;padding: 3px 5px;font-size: 11px;line-height: 10px;color: #555;vertical-align: middle;background-color: #fcfcfc;border: solid 1px #ccc;border-bottom-color: #bbb;border-radius: 3px;box-shadow: inset 0 -1px 0 #bbb}.codehilite{background: #ffffff}.codehilite .c{color: #999988;font-style: italic}.codehilite .err{color: #a61717;background-color: #e3d2d2}.codehilite .k{color: #282a3a;font-weight: bold}.codehilite .o{color: #282a3a;font-weight: bold}.codehilite .cm{color: #999988;font-style: italic}.codehilite .cp{color: #999999;font-weight: bold}.codehilite .c1{color: #999988;font-style: italic}.codehilite .cs{color: #999999;font-weight: bold;font-style: italic}.codehilite .gd{color: #282a3a;background-color: #ffdddd}.codehilite .gd .x{color: #282a3a;background-color: #ffaaaa}.codehilite .ge{color: #282a3a;font-style: italic}.codehilite .gr{color: #aa0000}.codehilite .gh{color: #999999}.codehilite .gi{color: #282a3a;background-color: #ddffdd}.codehilite .gi .x{color: #282a3a;background-color: #aaffaa}.codehilite .go{color: #888888}.codehilite .gp{color: #555555}.codehilite .gs{font-weight: bold}.codehilite .gu{color: #aaaaaa}.codehilite .gt{color: #aa0000}.codehilite .kc{color: #282a3a;font-weight: bold}.codehilite .kd{color: #282a3a;font-weight: bold}.codehilite .kp{color: #282a3a;font-weight: bold}.codehilite .kr{color: #282a3a;font-weight: bold}.codehilite .kt{color: #445588;font-weight: bold}.codehilite .m{color: #009999}.codehilite .s{color: #d14}.codehilite .na{color: #008080}.codehilite .nb{color: #0086B3}.codehilite .nc{color: #445588;font-weight: bold}.codehilite .no{color: #008080}.codehilite .ni{color: #800080}.codehilite .ne{color: #990000;font-weight: bold}.codehilite .nf{color: #990000;font-weight: bold}.codehilite .nn{color: #555555}.codehilite .nt{color: #282a3a080}.codehilite .nv{color: #008080}.codehilite .ow{color: #282a3a;font-weight: bold}.codehilite .w{color: #bbbbbb}.codehilite .mf{color: #009999}.codehilite .mh{color: #009999}.codehilite .mi{color: #009999}.codehilite .mo{color: #009999}.codehilite .sb{color: #d14}.codehilite .sc{color: #d14}.codehilite .sd{color: #d14}.codehilite .s2{color: #d14}.codehilite .se{color: #d14}.codehilite .sh{color: #d14}.codehilite .si{color: #d14}.codehilite .sx{color: #d14}.codehilite .sr{color: #009926}.codehilite .s1{color: #d14}.codehilite .ss{color: #990073}.codehilite .bp{color: #999999}.codehilite .vc{color: #008080}.codehilite .vg{color: #008080}.codehilite .vi{color: #008080}.codehilite .il{color: #009999}
+  </style>
+  <style type="text/css">
+  .markdown-body hr{background:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC")}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="markup">
+      <article id="content" class="markdown-body">
+        <p><center>
+          <title>ROSの基本操作</title>
+          <h5>第142回 ロボット工学セミナー</h5>
+          <h3>ロボットの作り方<br>
+            ～移動ロボットの制御とROSによる動作計画実習～</h3><br>
+          </center></p>
+
+          <h2>ROSの基本操作</h2>
+          <p>基本的なROS上で動くプログラムの書き方とコンパイル方法について説明します。</p>
+          <p>下記の実習を行うためには、リモートPCの<code>ROS_MASTER_URI</code>と<code>ROS_HOSTNAME</code>を<code>localhost</code>に戻す必要があります。<br>
+            エディタで<code>~/.bashrc</code>ファイルを開きます。下記のコマンドをターミナルに入力してください。</p>
+
+          <p><strong><code class="language-plaintext highlighter-rouge">【リモートPCで実施】</code></strong></p>
+          <div class="codehilite">
+            <pre><span class="nt">$ <span style="color:red">cd</span><br>$ <span style="color:red">gedit ~/.bashrc</span></pre>
+          </div>
+
+          <p>下図の赤枠で囲まれた部分が変更箇所となります。</p>
+          <p class="l"><img src="images/rosbasics_change_to_localhost.png"></p>
+          <p>修正後、画面右上のSaveにて保存してエディタを閉じます。</p>
+
+          <p>次に、変更内容をシステムに反映させます。</p>
+          <p><strong><code class="language-plaintext highlighter-rouge">【リモートPCで実施】</code></strong></p>
+          <div class="codehilite">
+            <pre><span class="nt">$ <span style="color:red">source ~/.bashrc</span></pre>
+          </div>
+
+          <br>
+
+          <h2>基本用語</h2>
+          <dl>
+            <dt>パッケージ</dt>
+            <dd>ノードや設定ファイル、コンパイル方法などをまとめたもの</dd>
+            <dt>ノード</dt>
+            <dd>ROSの枠組みを利用して動作する実行ファイル</dd>
+            <dt>メッセージ</dt>
+            <dd>ノード間でやりとりするデータ</dd>
+            <dt>トピック</dt>
+            <dd>ノード間でメッセージをやりとりする際にメッセージを格納する場所</dd>
+          </dl>
+
+          <p>ノード、メッセージ、トピックの関係は以下の図のように表せます。</p>
+
+          <p><img src="images/ros-topic.png" alt="ROS topics" /></p>
+
+          <p>基本的に、ソフトウェアとしてのROSはノード間のデータのやりとりをサポートするための枠組みです。<br>
+            加えて、使い回しがきく汎用的なノードを世界中のROS利用者で共有するコミュニティも大きな意味でのROSの一部となっています。</p>
+
+          <br>
+
+          <h2>ワークスペース</h2>
+          <p>ROSでは、プログラムをビルドする際にcatkinというソフトウェアパッケージを使用しています。<br>
+            また、catkin は、 cmake というソフトウェアを使っており、ROS用のプログラムのパッケージ毎にcmakeの設定ファイルを作成することで、ビルドに必要な設定を行います。</p>
+
+          <p><em style="color: red">今回はROSをインストールするために<code class="language-plaintext highlighter-rouge">install_ros_melodic.sh</code>を利用したのでワークスペースが自動的に作成されています。</em></p>
+          <p><code class="language-plaintext highlighter-rouge">install_ros_melodic.sh</code>を利用せず新しいワークスペースを作る場合、以下の手順を行う必要があります<em style="color: red">（今回は以下のコマンド入力は不要です）</em>。</p>
+
+          <p><strong><code class="language-plaintext highlighter-rouge">【リモートPCで実施】</code></strong></p>
+          <div class="codehilite">
+            <pre><span class="nt">$ <span style="color:red">mkdir -p ~/catkin_ws/src</span><br>$ <span style="color:red">cd ~/catkin_ws/src</span><br>$ <span style="color:red">catkin_init_workspace</span><br>Creating symlink "/home/[ユーザ名]/catkin/src/CMakeLists.txt"
+    pointing to "/opt/ros/melodic/share/catkin/cmake/toplevel.cmake"<br>$ <span style="color:red">ls</span><br>CMakeLists.txt<br>$ <span style="color:red">cd ..</span><br>$ <span style="color:red">ls</span><br>src</pre>
+          </div>
+
+          <p><code class="language-plaintext highlighter-rouge">catkin_ws</code>ディレクトリ内にある、<code class="language-plaintext highlighter-rouge">build</code>、<code class="language-plaintext highlighter-rouge">devel</code>は、catkinシステムがプログラムをビルドする際に使用するものなので、
+ユーザが触る必要はありません。<br>
+<code class="language-plaintext highlighter-rouge">catkin_ws/src</code>ディレクトリは、ROSパッケージのソースコードを置く場所で、中にある<code class="language-plaintext highlighter-rouge">CMakeLists.txt</code> は、
+ワークスペース全体をビルドするためのルールが書かれているファイルです。</p>
+
+          <p>このディレクトリに、本作業用のパッケージをダウンロードします。</p>
+
+          <p><strong><em>以下のコマンドを実行してください。</em></strong></p>
+
+          <p><strong><code class="language-plaintext highlighter-rouge">【リモートPCで実施】</code></strong></p>
+          <div class="codehilite">
+            <pre><span class="nt">$ <span style="color:red">cd ~/catkin_ws/src</span><br>$ <span style="color:red">git clone https://github.com/garcia-g/rsj_seminar_no139_ros_basics.git</span><br>$ <span style="color:red">ls</span><br>CMakeLists.txt   rsj_seminar_no139_ros_basics<br>$ </pre>
+          </div>
+
+          <p>gitは、ソースコードなどの変更履歴を記録して管理する分散型バージョン管理システムと呼ばれるものです。<br>
+            今回のセミナーでは詳細は触れませんが、研究開発を行う上では非常に有用なシステムですので、利用をお勧めします。<br>
+            公式の解説書、<a href="https://git-scm.com/book/ja/v2&quot;">Pro Git</a>などを参考にして下さい。</p>
+
+          <p>GitHubは、ソースコードなどを格納、保管、管理するためのWebリポジトリサービスです。<br>
+            オープンソースソフトウェアの開発、共同作業および配布のためによく利用されており、ROSではソースコードの保存と配布する場所としてもっとも人気なサービスとなっています。<br>
+            バイナリパッケージとして配布されているROSパッケージ以外の利用をする場合、GitHubを利用します。<br>
+            URLが分かれば上の手順だけで簡単にROSのパッケージが自分のワークスペースにインポートし利用することができます。</p>
+
+          <p>では、次にパッケージのディレクトリ構成を確認します。<br>
+            ダウンロードしているパッケージがバージョンアップされている場合などには、下記の実行例とファイル名が異なったり、ファイルが追加・削除されている場合があります。</p>
+
+          <p><strong><em>以下のコマンドを実行してください。</em></strong></p>
+
+          <p><strong><code class="language-plaintext highlighter-rouge">【リモートPCで実施】</code></strong></p>
+          <div class="codehilite">
+            <pre><span class="nt">$ <span style="color:red">cd ~/catkin_ws/src/rsj_seminar_no139_ros_basics/</span><br>$ <span style="color:red">ls</span><br>CMakeLists.txt   LICENSE   launch   msg   package.xml   src<br>$ <span style="color:red">ls launch/</span><br>test.launch<br>$ <span style="color:red">ls msg/</span><br>Text.msg<br>$ <span style="color:red">ls src/</span><br>Publish.cpp   Show.cpp<br>$</pre>
+          </div>
+
+          <p><code class="language-plaintext highlighter-rouge">CMakeLists.txt</code>と<code class="language-plaintext highlighter-rouge">package.xml</code>には、使っているライブラリの一覧や生成する実行ファイルとC++のソースコードの対応など、このパッケージをビルドするために必要な情報が書かれています。<br>
+            <code class="language-plaintext highlighter-rouge">launch</code>ディレクトリには、複数のノードでできたシステムの定義が、<code class="language-plaintext highlighter-rouge">msg</code>ディレクトリには、このパッケージ独自のデータ形式の定義が、<code class="language-plaintext highlighter-rouge">src</code>ディレクトリには、このパッケージに含まれるプログラム(ノード)のソースコードが含まれています。</p>
+
+          <p><code class="language-plaintext highlighter-rouge">catkin_make</code>コマンドで、ダウンロードした<code class="language-plaintext highlighter-rouge">rsj_seminar_no139_ros_basics</code>パッケージを含む、ワークスペース全体をビルドします。<code class="language-plaintext highlighter-rouge">catkin_make</code>は、ワークスペースの最上位ディレクトリ(<code class="language-plaintext highlighter-rouge">~/catkin_ws/</code>)で行います。</p>
+
+          <br>
+
+          <h2>ROSノードの理解とビルド・実行</h2>
+          <p>先ほど作成したワークスペースを利用します。<br>
+            ターミナルを開き、パッケージが正しく存在していることを確認します。</p>
+
+          <p><strong><code class="language-plaintext highlighter-rouge">【リモートPCで実施】</code></strong></p>
+          <div class="codehilite">
+            <pre><span class="nt">$ <span style="color:red">cd ~/catkin_ws/src/</span><br>$ <span style="color:red">ls</span><br>CMakeLists.txt   rsj_seminar_no139_ros_basics<br>$ <span style="color:red">cd ..</span><br>$</pre>
+          </div>
+
+          <p>ソースファイルの編集にはお好みのテキストエディタが利用可能です。<br>
+            Linuxでのプログラム開発がはじめての方には、Ubuntuにデフォルトでインストールされている<code class="language-plaintext highlighter-rouge">gedit</code>がおすすめです。プログラミング作業が多い方には<a href="https://azure.microsoft.com/ja-jp/products/visual-studio-code/"><code class="language-plaintext highlighter-rouge">Visual Studio Code</code></a>がおすすめです。</p>
+
+          <p><strong><em>お好みのテキストエディタで <code class="language-plaintext highlighter-rouge">~/catkin_ws/src/rsj_seminar_no139_ros_basics/src/Publish.cpp</code> を開きます。</em></strong></p>
+
+          <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+</pre></td><td class="rouge-code"><pre><span class="cp">#include &lt;ros/ros.h&gt;
+#include &lt;rsj_seminar_no139_ros_basics/Text.h&gt;
+</span>
+<span class="cp">#include &lt;string&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">ros</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">,</span> <span class="s">"Publish"</span><span class="p">);</span>
+  <span class="n">ros</span><span class="o">::</span><span class="n">NodeHandle</span> <span class="n">node</span><span class="p">;</span>
+
+  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">message</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">date</span><span class="p">;</span>
+  <span class="n">ros</span><span class="o">::</span><span class="n">param</span><span class="o">::</span><span class="n">param</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"~message"</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="s">"test seminar 2022"</span><span class="p">);</span>
+  <span class="n">ros</span><span class="o">::</span><span class="n">param</span><span class="o">::</span><span class="n">param</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"~date"</span><span class="p">,</span> <span class="n">date</span><span class="p">,</span> <span class="s">"January 29"</span><span class="p">);</span>
+
+  <span class="n">ros</span><span class="o">::</span><span class="n">Publisher</span> <span class="n">pub</span> <span class="o">=</span> <span class="n">node</span><span class="p">.</span><span class="n">advertise</span><span class="o">&lt;</span><span class="n">rsj_seminar_no139_ros_basics</span><span class="o">::</span><span class="n">Text</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"Publish"</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+  <span class="n">ros</span><span class="o">::</span><span class="n">Rate</span> <span class="n">rate</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+
+  <span class="k">while</span> <span class="p">(</span><span class="n">ros</span><span class="o">::</span><span class="n">ok</span><span class="p">())</span> <span class="p">{</span>
+    <span class="n">ros</span><span class="o">::</span><span class="n">spinOnce</span><span class="p">();</span>
+
+    <span class="n">ROS_INFO</span><span class="p">(</span><span class="s">"Publishing message '%s %s'"</span><span class="p">,</span> <span class="n">message</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span> <span class="n">date</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
+    <span class="n">rsj_seminar_no139_ros_basics</span><span class="o">::</span><span class="n">Text</span> <span class="n">sample</span><span class="p">;</span>
+    <span class="n">sample</span><span class="p">.</span><span class="n">message</span> <span class="o">=</span> <span class="n">message</span><span class="p">;</span>
+    <span class="n">sample</span><span class="p">.</span><span class="n">date</span> <span class="o">=</span> <span class="n">date</span><span class="p">;</span>
+    <span class="n">pub</span><span class="p">.</span><span class="n">publish</span><span class="p">(</span><span class="n">sample</span><span class="p">);</span>
+
+    <span class="n">rate</span><span class="p">.</span><span class="n">sleep</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+
+          <br>
+
+          <h2>送信ノードの作成（基本的なコードを読み解く）</h2>
+          <p>このコードが実行されたときの流れを確認しましょう。<br>まず、先頭部分では、必要なヘッダファイルをインクルードしています。</p>
+          <div class="codehilite">
+            <pre><span class="nt">#include &lt;ros/ros.h&gt;</span></pre>
+          </div>
+
+          <p>続いて、本ノードが利用するメッセージのヘッダファイルをインクルードしています。</p>
+          <div class="codehilite">
+            <pre><span class="nt">#include &lt;rsj_seminar_no139_ros_basics/Text.h&gt;</span></pre>
+          </div>
+
+          <p><code>std::string</code>が利用されるので、ヘッダファイルをインクルードします。</p>
+          <div class="codehilite">
+            <pre><span class="nt">#include &lt;string&gt;</span></pre>
+          </div>
+
+          <p>続いて、C++のmain関数が定義されています。<br>
+            本ノードは非常に簡単な構成としているため、すべての機能をmain関数に入れています。<br>
+            複雑な機能や色々なデータを持つノードには、クラスとしての実装することをおすすめします。
+          </p>
+
+          
+
+
+
+          <br>
+
+          <a href="index.html">メインページに戻る</a>
+
+                </article>
+              </div>
+            </div>
+          </body>
+          </html>
