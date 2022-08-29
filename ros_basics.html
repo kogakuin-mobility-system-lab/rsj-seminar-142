@@ -88,7 +88,7 @@
 
           <p><strong><code class="language-plaintext highlighter-rouge">【リモートPCで実施】</code></strong></p>
           <div class="codehilite">
-            <pre><span class="nt">$ <span style="color:red">cd ~/catkin_ws/src</span><br>$ <span style="color:red">git clone https://github.com/garcia-g/rsj_seminar_no139_ros_basics.git</span><br>$ <span style="color:red">ls</span><br>CMakeLists.txt   rsj_seminar_no139_ros_basics<br>$ </pre>
+            <pre><span class="nt">$ <span style="color:red">cd ~/catkin_ws/src</span><br>$ <span style="color:red">git clone https://github.com/rsj_seminar_no142_ros_basics.git</span><br>$ <span style="color:red">ls</span><br>CMakeLists.txt   rsj_seminar_no142_ros_basics<br>$ </pre>
           </div>
 
           <p>gitは、ソースコードなどの変更履歴を記録して管理する分散型バージョン管理システムと呼ばれるものです。<br>
@@ -107,13 +107,13 @@
 
           <p><strong><code class="language-plaintext highlighter-rouge">【リモートPCで実施】</code></strong></p>
           <div class="codehilite">
-            <pre><span class="nt">$ <span style="color:red">cd ~/catkin_ws/src/rsj_seminar_no139_ros_basics/</span><br>$ <span style="color:red">ls</span><br>CMakeLists.txt   LICENSE   launch   msg   package.xml   src<br>$ <span style="color:red">ls launch/</span><br>test.launch<br>$ <span style="color:red">ls msg/</span><br>Text.msg<br>$ <span style="color:red">ls src/</span><br>Publish.cpp   Show.cpp<br>$</pre>
+            <pre><span class="nt">$ <span style="color:red">cd ~/catkin_ws/src/rsj_seminar_no142_ros_basics/</span><br>$ <span style="color:red">ls</span><br>CMakeLists.txt   LICENSE   launch   msg   package.xml   src<br>$ <span style="color:red">ls launch/</span><br>test.launch<br>$ <span style="color:red">ls msg/</span><br>Text.msg<br>$ <span style="color:red">ls src/</span><br>Publish.cpp   Show.cpp<br>$</pre>
           </div>
 
           <p><code class="language-plaintext highlighter-rouge">CMakeLists.txt</code>と<code class="language-plaintext highlighter-rouge">package.xml</code>には、使っているライブラリの一覧や生成する実行ファイルとC++のソースコードの対応など、このパッケージをビルドするために必要な情報が書かれています。<br>
             <code class="language-plaintext highlighter-rouge">launch</code>ディレクトリには、複数のノードでできたシステムの定義が、<code class="language-plaintext highlighter-rouge">msg</code>ディレクトリには、このパッケージ独自のデータ形式の定義が、<code class="language-plaintext highlighter-rouge">src</code>ディレクトリには、このパッケージに含まれるプログラム(ノード)のソースコードが含まれています。</p>
 
-          <p><code class="language-plaintext highlighter-rouge">catkin_make</code>コマンドで、ダウンロードした<code class="language-plaintext highlighter-rouge">rsj_seminar_no139_ros_basics</code>パッケージを含む、ワークスペース全体をビルドします。<code class="language-plaintext highlighter-rouge">catkin_make</code>は、ワークスペースの最上位ディレクトリ(<code class="language-plaintext highlighter-rouge">~/catkin_ws/</code>)で行います。</p>
+          <p><code class="language-plaintext highlighter-rouge">catkin_make</code>コマンドで、ダウンロードした<code class="language-plaintext highlighter-rouge">rsj_seminar_no142_ros_basics</code>パッケージを含む、ワークスペース全体をビルドします。<code class="language-plaintext highlighter-rouge">catkin_make</code>は、ワークスペースの最上位ディレクトリ(<code class="language-plaintext highlighter-rouge">~/catkin_ws/</code>)で行います。</p>
 
           <br>
 
@@ -123,13 +123,13 @@
 
           <p><strong><code class="language-plaintext highlighter-rouge">【リモートPCで実施】</code></strong></p>
           <div class="codehilite">
-            <pre><span class="nt">$ <span style="color:red">cd ~/catkin_ws/src/</span><br>$ <span style="color:red">ls</span><br>CMakeLists.txt   rsj_seminar_no139_ros_basics<br>$ <span style="color:red">cd ..</span><br>$</pre>
+            <pre><span class="nt">$ <span style="color:red">cd ~/catkin_ws/src/</span><br>$ <span style="color:red">ls</span><br>CMakeLists.txt   rsj_seminar_no142_ros_basics<br>$ <span style="color:red">cd ..</span><br>$</pre>
           </div>
 
           <p>ソースファイルの編集にはお好みのテキストエディタが利用可能です。<br>
             Linuxでのプログラム開発がはじめての方には、Ubuntuにデフォルトでインストールされている<code class="language-plaintext highlighter-rouge">gedit</code>がおすすめです。プログラミング作業が多い方には<a href="https://azure.microsoft.com/ja-jp/products/visual-studio-code/"><code class="language-plaintext highlighter-rouge">Visual Studio Code</code></a>がおすすめです。</p>
 
-          <p><strong><em>お好みのテキストエディタで <code class="language-plaintext highlighter-rouge">~/catkin_ws/src/rsj_seminar_no139_ros_basics/src/Publish.cpp</code> を開きます。</em></strong></p>
+          <p><strong><em>お好みのテキストエディタで <code class="language-plaintext highlighter-rouge">~/catkin_ws/src/rsj_seminar_no142_ros_basics/src/Publish.cpp</code> を開きます。</em></strong></p>
 
           <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
@@ -164,7 +164,7 @@
 31
 32
 </pre></td><td class="rouge-code"><pre><span class="cp">#include &lt;ros/ros.h&gt;
-#include &lt;rsj_seminar_no139_ros_basics/Text.h&gt;
+#include &lt;rsj_seminar_no142_ros_basics/Text.h&gt;
 </span>
 <span class="cp">#include &lt;string&gt;
 </span>
@@ -175,9 +175,9 @@
   <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">message</span><span class="p">;</span>
   <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">date</span><span class="p">;</span>
   <span class="n">ros</span><span class="o">::</span><span class="n">param</span><span class="o">::</span><span class="n">param</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"~message"</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="s">"test seminar 2022"</span><span class="p">);</span>
-  <span class="n">ros</span><span class="o">::</span><span class="n">param</span><span class="o">::</span><span class="n">param</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"~date"</span><span class="p">,</span> <span class="n">date</span><span class="p">,</span> <span class="s">"January 29"</span><span class="p">);</span>
+  <span class="n">ros</span><span class="o">::</span><span class="n">param</span><span class="o">::</span><span class="n">param</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"~date"</span><span class="p">,</span> <span class="n">date</span><span class="p">,</span> <span class="s">"September 10"</span><span class="p">);</span>
 
-  <span class="n">ros</span><span class="o">::</span><span class="n">Publisher</span> <span class="n">pub</span> <span class="o">=</span> <span class="n">node</span><span class="p">.</span><span class="n">advertise</span><span class="o">&lt;</span><span class="n">rsj_seminar_no139_ros_basics</span><span class="o">::</span><span class="n">Text</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"Publish"</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+  <span class="n">ros</span><span class="o">::</span><span class="n">Publisher</span> <span class="n">pub</span> <span class="o">=</span> <span class="n">node</span><span class="p">.</span><span class="n">advertise</span><span class="o">&lt;</span><span class="n">rsj_seminar_no142_ros_basics</span><span class="o">::</span><span class="n">Text</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"Publish"</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
 
   <span class="n">ros</span><span class="o">::</span><span class="n">Rate</span> <span class="n">rate</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
 
@@ -185,7 +185,7 @@
     <span class="n">ros</span><span class="o">::</span><span class="n">spinOnce</span><span class="p">();</span>
 
     <span class="n">ROS_INFO</span><span class="p">(</span><span class="s">"Publishing message '%s %s'"</span><span class="p">,</span> <span class="n">message</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span> <span class="n">date</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
-    <span class="n">rsj_seminar_no139_ros_basics</span><span class="o">::</span><span class="n">Text</span> <span class="n">sample</span><span class="p">;</span>
+    <span class="n">rsj_seminar_no142_ros_basics</span><span class="o">::</span><span class="n">Text</span> <span class="n">sample</span><span class="p">;</span>
     <span class="n">sample</span><span class="p">.</span><span class="n">message</span> <span class="o">=</span> <span class="n">message</span><span class="p">;</span>
     <span class="n">sample</span><span class="p">.</span><span class="n">date</span> <span class="o">=</span> <span class="n">date</span><span class="p">;</span>
     <span class="n">pub</span><span class="p">.</span><span class="n">publish</span><span class="p">(</span><span class="n">sample</span><span class="p">);</span>
@@ -200,7 +200,7 @@
 
           <br>
 
-          <h2>送信ノードの作成（基本的なコードを読み解く）</h2>
+          <h3>送信ノードの作成（基本的なコードを読み解く）</h3>
           <p>このコードが実行されたときの流れを確認しましょう。<br>まず、先頭部分では、必要なヘッダファイルをインクルードしています。</p>
           <div class="codehilite">
             <pre><span class="nt">#include &lt;ros/ros.h&gt;</span></pre>
@@ -208,7 +208,7 @@
 
           <p>続いて、本ノードが利用するメッセージのヘッダファイルをインクルードしています。</p>
           <div class="codehilite">
-            <pre><span class="nt">#include &lt;rsj_seminar_no139_ros_basics/Text.h&gt;</span></pre>
+            <pre><span class="nt">#include &lt;rsj_seminar_no142_ros_basics/Text.h&gt;</span></pre>
           </div>
 
           <p><code>std::string</code>が利用されるので、ヘッダファイルをインクルードします。</p>
@@ -221,7 +221,350 @@
             複雑な機能や色々なデータを持つノードには、クラスとしての実装することをおすすめします。
           </p>
 
-          
+          <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-code"><pre><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">ros</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">,</span> <span class="s">"Publish"</span><span class="p">);</span>
+  <span class="n">ros</span><span class="o">::</span><span class="n">NodeHandle</span> <span class="n">node</span><span class="p">;</span>
+
+  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">message</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">date</span><span class="p">;</span>
+  <span class="n">ros</span><span class="o">::</span><span class="n">param</span><span class="o">::</span><span class="n">param</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"~message"</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="s">"test seminar 2022"</span><span class="p">);</span>
+  <span class="n">ros</span><span class="o">::</span><span class="n">param</span><span class="o">::</span><span class="n">param</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"~date"</span><span class="p">,</span> <span class="n">date</span><span class="p">,</span> <span class="s">"September 10"</span><span class="p">);</span>
+
+  <span class="n">ros</span><span class="o">::</span><span class="n">Publisher</span> <span class="n">pub</span> <span class="o">=</span> <span class="n">node</span><span class="p">.</span><span class="n">advertise</span><span class="o">&lt;</span><span class="n">rsj_seminar_no142_ros_basics</span><span class="o">::</span><span class="n">Text</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"Publish"</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+  <span class="n">ros</span><span class="o">::</span><span class="n">Rate</span> <span class="n">rate</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+
+  <span class="k">while</span> <span class="p">(</span><span class="n">ros</span><span class="o">::</span><span class="n">ok</span><span class="p">())</span> <span class="p">{</span>
+    <span class="n">ros</span><span class="o">::</span><span class="n">spinOnce</span><span class="p">();</span>
+
+    <span class="n">ROS_INFO</span><span class="p">(</span><span class="s">"Publishing message '%s %s'"</span><span class="p">,</span> <span class="n">message</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span> <span class="n">date</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
+    <span class="n">rsj_seminar_no142_ros_basics</span><span class="o">::</span><span class="n">Text</span> <span class="n">sample</span><span class="p">;</span>
+    <span class="n">sample</span><span class="p">.</span><span class="n">message</span> <span class="o">=</span> <span class="n">message</span><span class="p">;</span>
+    <span class="n">sample</span><span class="p">.</span><span class="n">date</span> <span class="o">=</span> <span class="n">date</span><span class="p">;</span>
+    <span class="n">pub</span><span class="p">.</span><span class="n">publish</span><span class="p">(</span><span class="n">sample</span><span class="p">);</span>
+
+    <span class="n">rate</span><span class="p">.</span><span class="n">sleep</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+
+          <p><code class="language-plaintext highlighter-rouge">main</code>関数は、まずノードのセットアップを行います。</p>
+
+          <p><code class="language-plaintext highlighter-rouge">ros::init</code>はROSのインフラストラクチャの初期設定を行いノードを初期化します。<br />
+          1、2番目の引数には、main関数の引数をそのまま渡し、3番目の引数には、このノードの名前(この例では”Publish”)を与えています。</p>
+
+          <p>その次にある<code class="language-plaintext highlighter-rouge">ros::NodeHandle node</code>は、ノードを操るための変数を初期化します。</p>
+
+          <p>次の４行はパラメータの初期化です。ROSではコマンドライン引数によるパラメータ指定より、ROSのパラメータ設定機能の利用が一般的です。<br />
+          ROSのパラメータ設定機能の利用により、roslaunch（複数のノードを起動するためのツール）やGUIツールからもパラメータ設定を容易に行えます。</p>
+
+          <p>パラメータの初期化が終わったら、データ送信のためのパブリッシャーを初期化します。<br />
+          この変数の作成によりトピックが作成され、<strong style="color: red">このノードからデータの送信が可能になります。</strong> <br />
+          以下の引数を与えています。</p>
+
+          <dl>
+            <dt><code class="language-plaintext highlighter-rouge">"Publish"</code></dt>
+            <dd>トピック名：データをこのトピックに送信する</dd>
+            <dt><code class="language-plaintext highlighter-rouge">1</code></dt>
+            <dd>メッセージのバッファリング量を指定 (大きくすると、処理が一時的に重くなったときなどに受け取り側の読み飛ばしを減らせる)</dd>
+          </dl>
+
+          <p>advertise関数についている<code class="language-plaintext highlighter-rouge">&lt;rsj_seminar_no142_ros_basics::Text&gt;</code>の部分はメッセージの型を指定しています。<br />
+          (この指定方法は、C++のテンプレートという機能を利用していますが、ここでは「<code class="language-plaintext highlighter-rouge">advertise</code>のときはメッセージの型指定を<code class="language-plaintext highlighter-rouge">&lt;&gt;</code>の中に書く」とだけ覚えておけば問題ありません)</p>
+
+          <p>セットアップの最後として、<code class="language-plaintext highlighter-rouge">ros::Rate rate(1)</code>で周期実行のためのクラスを初期化しています。<br />
+          初期化時の引数で実行周波数(この例では1 Hz)を指定します。</p>
+
+
+          <p><code class="language-plaintext highlighter-rouge">while(ros::ok())</code>で、メインの無限ループを回します（すなわちこのノードのメーンプロセッシングループです）。<br />
+          <code class="language-plaintext highlighter-rouge">ros::ok()</code>を<code class="language-plaintext highlighter-rouge">while</code>の条件にすることで、ノードの終了指示が与えられたとき(<code style="border: 1px solid black" class="language-plaintext highlighter-rouge">Ctrl+c</code> が押された場合も含む)には、ループを抜けて終了処理などが行えるようになっています。</p>
+
+          <p>ループ中では、まず、<strong style="color: red"><code class="language-plaintext highlighter-rouge">ros::spinOnce()</code>を呼び出して、ROSのメッセージを受け取る</strong> といった処理を行います。<br />
+          <code class="language-plaintext highlighter-rouge">spinOnce()</code>は、その時点で届いているメッセージの受け取り処理を済ませた後、すぐに処理を返します。
+          <code class="language-plaintext highlighter-rouge">spinOnce()</code>はこのシンプルなプログラムでは意味をなしません。というのは、トピック受信時に処理を行うコールバックを、ここでは定義していないためです。仮にこのアプリケーションにトピック受信処理機能を加えた場合、<code class="language-plaintext highlighter-rouge">spinOnce()</code>を行わなければコールバックが呼ばれないため、ここで加えておいた方がよいでしょう。<br />
+          <code class="language-plaintext highlighter-rouge">rate.sleep()</code>は、先ほど初期化した実行周波数を維持するように<code class="language-plaintext highlighter-rouge">sleep</code>します。</p>
+
+          <p><code class="language-plaintext highlighter-rouge">ros::spinOnce()</code>と<code class="language-plaintext highlighter-rouge">rate.sleep()</code>の間に本ノードの処理を入れています。</p>
+
+          <p><code class="language-plaintext highlighter-rouge">spinOnce()</code>後は、ROSでログ情報を画面などに出力する際に用いるROS_INFO()関数を呼び出してメッセージを表示しています。<br />
+          他にも、ROS_DEBUG()、ROS_WARN()、ROS_ERROR()、ROS_FATAL()などのデバッグログ関数が用意されています。</p>
+
+          <p>その後、データを送信します。<br />
+          まずは送信するデータ型（<code class="language-plaintext highlighter-rouge">rsj_seminar_no142_ros_basics::Text</code>）を初期化し、値を設定します。<br />
+          さきほどセットアップで作成したパラメータの値を利用します。<br />
+          こうすることで、送信データの内容を、実行するときに自由に変更できます。</p>
+
+          <p>そして、<code class="language-plaintext highlighter-rouge">pub.publish(sample)</code>によってデータを送信します。<br />
+          この行でデータはバッファに入れられ、別スレッドが自動的にサブスクライバに送信します(ROSのデフォルトでは非同期送信となります）。</p>
+
+          <p>main ループが終了すると作成した変数は自動的にクリーンアップを実行し、ノードのシャットダウンを行います。</p>
+
+
+          <br>
+
+          <h3>ビルド＆実行</h3>
+          <p>ROS パッケージをビルドするためには、<code class="language-plaintext highlighter-rouge">catkin_make</code>コマンドを用います。</p>
+
+          <p><strong><em>下記コマンドをターミナルで実行してみましょう。</em></strong></p>
+
+          <p><strong><code class="language-plaintext highlighter-rouge">【リモートPCで実施】</code></strong></p>
+          <div class="codehilite">
+            <pre><span class="nt">$ <span style="color:red">cd ~/catkin_ws/</span><br>$ <span style="color:red">catkin_make</span></pre>
+          </div>
+
+          <p>ROSシステムの実行の際、ROSを通してノード同士がデータをやりとりするために用いる「roscore」を起動しておく必要があります。<br />
+          2つ目のターミナルを開き、それぞれで以下を実行して下さい。</p>
+
+          <p><strong><em>1つ目のターミナルで下記を実行します。</em></strong></p>
+          <p><strong><code class="language-plaintext highlighter-rouge">【リモートPCで実施】</code></strong></p>
+          <div class="codehilite">
+            <pre><span class="nt">$ <span style="color:red">roscore</span></pre>
+          </div>
+
+          <p>ROSでワークスペースを利用するとき、ターミナルでそのワークスペースに環境変数などを設定することが必要です。<br />
+          このためにワークスペースの最上位のディレクトリで<code class="language-plaintext highlighter-rouge">source devel/setup.bash</code>を実行します。<br />
+          このコマンドはワークスペースの環境編情報などを利用中のターミナルに読み込みます。<br />
+          しかし、 ターミナルごとに環境変数はリセットされますので、新しいターミナルでワークスペースを利用しはじめるときには、まず<code class="language-plaintext highlighter-rouge">source devel/setup.bash</code>を実行しなければなりません。<br />
+          一つのターミナルで一回だけ実行すれば十分です。そのターミナルを閉じるまで有効となります。<br />
+          この作業を省略するため、<code class="language-plaintext highlighter-rouge">~/.bashrc</code>に<code class="language-plaintext highlighter-rouge">source devel/setup.bash</code>を追加することをおすすめします。(<em style="color: red"><code class="language-plaintext highlighter-rouge">install_ros_melodic.sh</code>を利用した場合は<code class="language-plaintext highlighter-rouge">.bashrc</code>に<code class="language-plaintext highlighter-rouge">source devel/setup.bash</code>が既に追加されています。</em>)</p>
+
+          <p><strong><em>2つ目のターミナルで下記を実行します。</em></strong></p>
+          <p><strong><code class="language-plaintext highlighter-rouge">【リモートPCで実施】</code></strong></p>
+          <div class="codehilite">
+            <pre><span class="nt">$ <span style="color:red">cd ~/catkin_ws/</span><br>$ <span style="color:red">rosrun rsj_seminar_no142_ros_basics publish</span><br>[INFO] [1640146129.900580884]: Publishing message 'test seminar 2022 September 10'</pre>
+          </div>
+
+          <p>上記のようなログが表示されれば成功です。</p>
+
+          <p>ソースコードにパラメータを利用したので、コマンドラインからパラメータ設定を試してみましょう。</p>
+
+          <p><strong><em>ノードを実行した2つ目のターミナル（注意：<code class="language-plaintext highlighter-rouge">roscore</code>のターミナルではなくて）に <code style="border: 1px solid black" class="language-plaintext highlighter-rouge">Ctrl+c</code> を入力してノードを終了します。</em></strong></p>
+
+          <p><strong><em>そして以下を実行してください。</em></strong></p>
+
+          <p><strong><code class="language-plaintext highlighter-rouge">【リモートPCで実施】</code></strong></p>
+          <div class="codehilite">
+            <pre><span class="nt">$ <span style="color:red">rosrun rsj_seminar_no142_ros_basics publish _message:=test-2 _date:=today</span><br>[INFO] [1640146529.644756809]: Publishing message 'test-2 today'</pre>
+          </div>
+
+          <p>上記のようなログが表示されれば成功です。</p>
+
+          <p><strong><em>実行後は両方のターミナルで <code style="border: 1px solid black" class="language-plaintext highlighter-rouge">Ctrl+c</code> でノードと<code class="language-plaintext highlighter-rouge">roscore</code>を終了します。</em></strong></p>
+          <br>
+          <h3 id="受信ノードの作成">受信ノードの作成</h3>
+          <p>前節で作成したノードはメッセージを送信するノードでした。<br />
+          次にメッセージを受信するノードを作成してみましょう。</p>
+
+          <p>以下のソースは<code class="language-plaintext highlighter-rouge">rsj_seminar_no142_ros_basics/src/Show.cpp</code>ファイルにあります。</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre></td><td class="rouge-code"><pre><span class="cp">#include &lt;ros/ros.h&gt;
+#include &lt;rsj_seminar_no142_ros_basics/Text.h&gt;
+</span>
+<span class="cp">#include &lt;iostream&gt;
+</span>
+<span class="kt">void</span> <span class="nf">callback</span><span class="p">(</span><span class="k">const</span> <span class="n">rsj_seminar_no142_ros_basics</span><span class="o">::</span><span class="n">Text</span><span class="o">::</span><span class="n">ConstPtr</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">msg</span><span class="o">-&gt;</span><span class="n">message</span> <span class="o">&lt;&lt;</span> <span class="s">" "</span> <span class="o">&lt;&lt;</span> <span class="n">msg</span><span class="o">-&gt;</span><span class="n">date</span> <span class="o">&lt;&lt;</span> <span class="sc">'\n'</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">ros</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">,</span> <span class="s">"Show"</span><span class="p">);</span>
+  <span class="n">ros</span><span class="o">::</span><span class="n">NodeHandle</span> <span class="n">node</span><span class="p">;</span>
+
+  <span class="n">ros</span><span class="o">::</span><span class="n">Subscriber</span> <span class="n">sub</span> <span class="o">=</span> <span class="n">node</span><span class="p">.</span><span class="n">subscribe</span><span class="p">(</span><span class="s">"Publish"</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">callback</span><span class="p">);</span>
+
+  <span class="n">ros</span><span class="o">::</span><span class="n">spin</span><span class="p">();</span>
+
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+          <p>本ノードは<code class="language-plaintext highlighter-rouge">Publish</code>というトピックから取得したデータをターミナルに表示します。<br />
+          <code class="language-plaintext highlighter-rouge">Publish.cpp</code>からの差は以下のようです。</p>
+
+          <p>まずは<code class="language-plaintext highlighter-rouge">callback</code>関数です。<br />
+          この関数はトピックのデータ型に合っているポインタを引数として受け取ります。<br />
+          トピックからデータを受け取ったら、<code class="language-plaintext highlighter-rouge">callback</code>関数は呼ばれます。<br />
+          そのデータを<code class="language-plaintext highlighter-rouge">std::cout</code>に出力し終了します。</p>
+
+          <p><code class="language-plaintext highlighter-rouge">const rsj_seminar_no142_ros_basics::Text::ConstPtr</code> は、const型(内容を書き換えられない)、<code class="language-plaintext highlighter-rouge">rsj_seminar_no142_ros_basics</code>パッケージに含まれる、<code class="language-plaintext highlighter-rouge">Text</code>型のメッセージの、const型ポインタを表しています。<br />
+          <code class="language-plaintext highlighter-rouge">&amp;msg</code>の<code class="language-plaintext highlighter-rouge">&amp;</code>は、参照型(内容を書き換えられるように変数を渡すことができる)という意味ですが、(const型なので)ここでは特に気にする必要はありません。<br />
+          msgはクラスへのポインタなので「-&gt;」を用い、以降はクラスのメンバ変数へのアクセスなので「.」を用いてアクセスしています。</p>
+
+          <p><code class="language-plaintext highlighter-rouge">main</code>関数内にパラメータの初期化はなくなりました。本ノードはパラメータを利用しません。</p>
+
+          <p><code class="language-plaintext highlighter-rouge">ros::Publisher</code>の初期化もなくなり、代わりに<code class="language-plaintext highlighter-rouge">ros::Subscriber</code>を初期化します。<br />
+          この行はトピックへのアクセスを初期化し、データ取得時の対応を設定します。<br />
+          引数は以下です。</p>
+
+          <dl>
+            <dt><code class="language-plaintext highlighter-rouge">"Publish"</code></dt>
+            <dd>トピック名</dd>
+            <dt><code class="language-plaintext highlighter-rouge">10</code></dt>
+            <dd>バッファーサイズ</dd>
+            <dt><code class="language-plaintext highlighter-rouge">callback</code></dt>
+            <dd>メッセージを受け取ったときに呼び出す関数を指定 (<code class="language-plaintext highlighter-rouge">callback</code>関数)</dd>
+          </dl>
+
+          <p>最後に、main ループでの処理は不要となります。<br />
+          本ノードはトピック受信時以外何もしないので、無限ループになる<code class="language-plaintext highlighter-rouge">ros::spin()</code>を呼びます。<br />
+          <code class="language-plaintext highlighter-rouge">ros::spin()</code>は、<code class="language-plaintext highlighter-rouge">Publish.cpp</code>における<code class="language-plaintext highlighter-rouge">while(...)</code>および<code class="language-plaintext highlighter-rouge">ros::spinOnce()</code>と類似処理を実施し、ノードがシャットダウンされるまでに戻りません。</p>
+          <br>
+          <h3 id="実行">実行</h2>
+          <p>作成したノードを実行してみましょう。</p>
+
+          <p><strong><em>1つ目のターミナルで以下を実行します。</em></strong></p>
+
+          <p><strong><code class="language-plaintext highlighter-rouge">【リモートPCで実施】</code></strong></p>
+          <div class="codehilite">
+            <pre><span class="nt">$ <span style="color:red">roscore</span></pre>
+          </div>
+
+          <p><strong><em>そして2つ目のターミナルで以下を実行します。</em></strong></p>
+          <div class="codehilite">
+            <pre><span class="nt">$ <span style="color:red">cd ~/catkin_ws/</span><br><span class="nt">$ <span style="color:red">rosrun rsj_seminar_no142_ros_basics publish</span><br>[INFO] [1494840089.900580884]: Publishing message 'test seminar 2022 September 10']</pre>
+          </div>
+
+
+          <p><strong><em>最後に、3番目のターミナルを開いて、下記を実行します。</em></strong></p>
+          <div class="codehilite">
+            <pre><span class="nt">$ <span style="color:red">cd ~/catkin_ws/</span><br><span class="nt">$ <span style="color:red">rosrun rsj_seminar_no142_ros_basics show</span></pre>
+          </div>
+
+
+          <p>「test seminar 2022 September 10」と表示されれば成功です。</p>
+          <p>以上の手順で、ROSパッケージに含まれるノードのソースコードを編集し、ビルドして、実行できるようになりました。</p>
+          <p><strong><em>正常動作を確認後、各ターミナルにて<code style="border: 1px solid black" class="language-plaintext highlighter-rouge">Ctrl+c</code> にて、roscoreおよび、<code class="language-plaintext highlighter-rouge">publish</code>ノード、<code class="language-plaintext highlighter-rouge">show</code>ノードを停止してください。</em></strong></p>
+
+
+          <br>
+
+          <h2 id="システムとして実行する">システムとして実行する</h2>
+          <p><code class="language-plaintext highlighter-rouge">roslaunch</code>を利用して、複数のノードでできたシステムを開始、終了することができます。</p>
+          <p>手動でノードを１ノードずつ起動することは手間がかかりますし、ミスを誘発する可能性も高まります。<br />
+          そのためにROSに<code class="language-plaintext highlighter-rouge">roslaunch</code>というツールがあります。<br />
+          <code class="language-plaintext highlighter-rouge">roslaunch</code>を利用すると、システム全体をまとめて起動し、状況をモニターし、そしてまとめて終了することができます。</p>
+
+          <h3 id="launchファイルを読み解く">launchファイルを読み解く</h3>
+
+          <p>launchファイルは、ノードやパラメータの組み合わせを定義するためのファイルです。<br />
+          フォーマットはXMLです。<br />
+          システムに含まれるノードとそのノードの起動方法を一つずつ定義します。</p>
+
+          <p><code class="language-plaintext highlighter-rouge">rsj_seminar_no142_ros_basics</code>パッケージに以下のファイルが<code class="language-plaintext highlighter-rouge">launch/test.launch</code>として存在します。<br />
+          このファイルはさきほど手動で起動したシステムを定義します。</p>
+
+          <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-code"><pre><span class="nt">&lt;launch&gt;</span>
+    <span class="nt">&lt;node</span> <span class="na">name=</span><span class="s">"publisher"</span> <span class="na">pkg=</span><span class="s">"rsj_seminar_no142_ros_basics"</span> <span class="na">type=</span><span class="s">"publish"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"message"</span> <span class="na">value=</span><span class="s">"Test seminar"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"date"</span> <span class="na">value=</span><span class="s">"September 10"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/node&gt;</span>
+
+    <span class="nt">&lt;node</span> <span class="na">name=</span><span class="s">"show"</span> <span class="na">pkg=</span><span class="s">"rsj_seminar_no142_ros_basics"</span> <span class="na">type=</span><span class="s">"show"</span> <span class="na">output=</span><span class="s">"screen"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/launch&gt;</span>
+          </pre></td></tr></tbody></table></code></pre></div></div>
+
+          <p><code class="language-plaintext highlighter-rouge">node</code>タグは２つあります。<br />
+          属性は下記の通りです。</p>
+
+          <dl>
+            <dt><code class="language-plaintext highlighter-rouge">name</code></dt>
+            <dd>ノードインスタンスの名</dd>
+            <dt><code class="language-plaintext highlighter-rouge">pkg</code></dt>
+            <dd>ノードを定義するパッケージ名</dd>
+            <dt><code class="language-plaintext highlighter-rouge">type</code></dt>
+            <dd>ノードの実行ファイル名</dd>
+            <dt><code class="language-plaintext highlighter-rouge">output</code></dt>
+            <dd><code class="language-plaintext highlighter-rouge">stdout</code>に対する出力先：定義しない場合、<code class="language-plaintext highlighter-rouge">stdout</code>（<code class="language-plaintext highlighter-rouge">ROS_INFO</code>や<code class="language-plaintext highlighter-rouge">std::cout</code>への出力等）はターミナルで表示されず、<code class="language-plaintext highlighter-rouge">~/.ros/log/</code>に保存されるログファイルだけに出力される。</dd>
+          </dl>
+
+          <p>１番目の<code class="language-plaintext highlighter-rouge">&lt;node&gt;</code>は<code class="language-plaintext highlighter-rouge">publish</code>ノードの定義です。<br />
+          本要素の中でパラメータの設定も行っています。<br />
+          なお、パラメータの設定を行わない場合はノードのソースに定義したデフォルト値が利用されるので、記述は必須ではありません。</p>
+
+          <p>２番目の<code class="language-plaintext highlighter-rouge">&lt;node&gt;</code>は<code class="language-plaintext highlighter-rouge">show</code>ノードの定義です。<br />
+          パラメータはありませんが、出力されることをターミナルで表示するようにします。</p>
+
+          <br>
+          <h3 id="roslaunchでシステムを起動">roslaunchでシステムを起動</h3>
+          <p><strong><em><code class="language-plaintext highlighter-rouge">roscore</code>や起動中のノードをすべて <code style="border: 1px solid black" class="language-plaintext highlighter-rouge">Ctrl+c</code> で停止します。</em></strong></p>
+          <p><strong><em>その後、いずれか１つのターミナルで以下を実行します。</em></strong></p>
+
+          <p><strong><code class="language-plaintext highlighter-rouge">【リモートPCで実施】</code></strong></p>
+          <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-code"><pre><span class="nv">$ </span><span style="color:red">cd ~/catkin_ws</span>
+<span class="nv">$ </span><span style="color:red">roslaunch rsj_seminar_no142_ros_basics test.launch</span>
+... logging to /home/user_name/.ros/log/40887b56-395c-11e7-b8
+68-d8cb8ae35bff/roslaunch-user_name-11087.log
+Checking log directory <span class="k">for </span>disk usage. This may take awhile.
+Press Ctrl-C to interrupt
+Done checking log file disk usage. Usage is &lt;1GB.
+
+started roslaunch server http://localhost:11311/
+
+SUMMARY
+<span class="o">========</span>
+
+PARAMETERS
+ <span class="k">*</span> /publisher/date: September 10
+ <span class="k">*</span> /publisher/message: Test seminar
+ <span class="k">*</span> /rosdistro: melodic
+ <span class="k">*</span> /rosversion: 1.14.9
+
+NODES
+  /
+    publisher <span class="o">(</span>rsj_seminar_no142_ros_basics/publish<span class="o">)</span>
+    show <span class="o">(</span>rsj_seminar_no142_ros_basics/show<span class="o">)</span>
+
+<span class="nv">ROS_MASTER_URI</span><span class="o">=</span>http://localhost:11311
+
+process[rosout-1]: started with pid <span class="o">[</span>18496]
+started core service <span class="o">[</span>/rosout]
+process[publisher-2]: started with pid <span class="o">[</span>18499]
+process[show-3]: started with pid <span class="o">[</span>18501]
+Test seminar September 10
+Test seminar September 10
+          </pre></td></tr></tbody></table></code></pre></div></div>
+
+          <p>「Test seminar September 10」が繰り返して表示されたら成功です。</p>
+
+          <p><strong><em><code style="border: 1px solid black" class="language-plaintext highlighter-rouge">Ctrl+c</code> でノードを停止します。</em></strong></p>
+
+          <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-code"><pre>Test seminar September 10
+Test seminar September 10
+Test seminar September 10
+  <span class="o">(</span><span style="color:red">Ctrl+c</span><span class="o">)</span>
+^C[show-2] killing on <span class="nb">exit</span>
+<span class="o">[</span>publisher-1] killing on <span class="nb">exit
+</span>shutting down processing monitor...
+... shutting down processing monitor <span class="nb">complete
+</span><span class="k">done</span>
+<span class="err">$</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+          <p>これでシステムの起動、停止が簡単にできるようになりました。</p>
+          <p><code class="language-plaintext highlighter-rouge">roslaunch</code>を利用する場合は、別のターミナルでの<code class="language-plaintext highlighter-rouge">roscore</code>の実行は不要です。
+          <code class="language-plaintext highlighter-rouge">roslaunch</code>が自動的に<code class="language-plaintext highlighter-rouge">roscore</code>の起動や停止を行うためです。</p>
 
 
 
