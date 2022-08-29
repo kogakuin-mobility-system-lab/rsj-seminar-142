@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>移動ロボットの動作確認</title>
+  <style type="text/css">
+  html{font-family: sans-serif;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%}body{margin: 0}article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display: block}audio,canvas,progress,video{display: inline-block;vertical-align: baseline}audio:not([controls]){display: none;height: 0}[hidden],template{display: none}a{background: transparent}a:active,a:hover{outline: 0}abbr[title]{border-bottom: 1px dotted}b,strong{font-weight: bold}dfn{font-style: italic}h1{font-size: 2em;margin: 0.67em 0}mark{background: #ff0;color: #282a3a}small{font-size: 80%}sub,sup{font-size: 75%;line-height: 0;position: relative;vertical-align: baseline}sup{top: -0.5em}sub{bottom: -0.25em}img{border: 0}svg:not(:root){overflow: hidden}figure{margin: 1em 40px}hr{box-sizing: content-box;height: 0}pre{overflow: auto}code,kbd,pre,samp{font-family: monospace, monospace;font-size: 1em}button,input,optgroup,select,textarea{color: inherit;font: inherit;margin: 0}button{overflow: visible}button,select{text-transform: none}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance: button;cursor: pointer}button[disabled],html input[disabled]{cursor: default}button::-moz-focus-inner,input::-moz-focus-inner{border: 0;padding: 0}input{line-height: normal}input[type="checkbox"],input[type="radio"]{box-sizing: border-box;padding: 0}input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{height: auto}input[type="search"]{-webkit-appearance: textfield;box-sizing: content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance: none}fieldset{border: 1px solid #c0c0c0;margin: 0 2px;padding: 0.35em 0.625em 0.75em}legend{border: 0;padding: 0}textarea{overflow: auto}optgroup{font-weight: bold}table{border-collapse: collapse;border-spacing: 0}td,th{padding: 0}*{box-sizing: border-box}input,select,textarea,button{font: 13px/1.4 Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"}body{min-width: 1020px;font: 13px/1.4 Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";color: #282a3a;background-color: #fff}a{color: #4183c4;text-decoration: none}a:hover,a:active{text-decoration: underline}hr,.rule{height: 0;margin: 15px 0;overflow: hidden;background: transparent;border: 0;border-bottom: 1px solid #ddd}hr:before,.rule:before{display: table;content: ""}hr:after,.rule:after{display: table;clear: both;content: ""}h1,h2,h3,h4,h5,h6{margin-top: 15px;margin-bottom: 15px;line-height: 1.1}h1{font-size: 30px}h2{font-size: 21px}h3{font-size: 16px}h4{font-size: 14px}h5{font-size: 12px}h6{font-size: 11px}small{font-size: 90%}blockquote{margin: 0}.lead{margin-bottom: 30px;font-size: 20px;font-weight: 300;color: #555}.text-muted{color: #999}.text-danger{color: #bd2c00}.text-emphasized{font-weight: bold;color: #333}ul,ol{padding: 0;margin-top: 0;margin-bottom: 0}ol ol,ul ol{list-style-type: lower-roman}ul ul ol,ul ol ol,ol ul ol,ol ol ol{list-style-type: lower-alpha}dd{margin-left: 0}tt,code{font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;font-size: 12px}pre{margin-top: 0;margin-bottom: 0;font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace}#realtime .status{overflow: visible;position: absolute;top: -5px;left: 0;background: url("/public/images/github-status.png");width: 26px;height: 26px;display: block;margin: 0 5px 0 0}#realtime .up{background-position: 0 0}#realtime .problem{background-position: 0 -53px}#realtime .down{background-position: 0 -26px}.container{max-width: 920px;margin: 0 auto 20px auto}#header{background: #FAFAFA;background: -moz-linear-gradient(#FAFAFA, #EAEAEA);background: -webkit-linear-gradient(#FAFAFA, #EAEAEA);-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#fafafa', endColorstr='#eaeaea')";border-bottom: 1px solid #CACACA;box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4),0 0 10px rgba(0, 0, 0, 0.1)}#markup{padding: 3px}#markup article{padding-top: 30px}.markdown-body{overflow: hidden;font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;font-size: 16px;line-height: 1.6;word-wrap: break-word}.markdown-body>*:first-child{margin-top: 0 !important}.markdown-body>*:last-child{margin-bottom: 0 !important}.markdown-body .absent{color: #c00}.markdown-body .anchor{position: absolute;top: 0;left: 0;display: block;padding-right: 6px;padding-left: 30px;margin-left: -30px}.markdown-body .anchor:focus{outline: none}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{position: relative;margin-top: 1em;margin-bottom: 16px;font-weight: bold;line-height: 1.4}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{display: none;color: #282a3a;vertical-align: middle}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{padding-left: 8px;margin-left: -30px;text-decoration: none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{display: inline-block}.markdown-body h1 tt,.markdown-body h1 code,.markdown-body h2 tt,.markdown-body h2 code,.markdown-body h3 tt,.markdown-body h3 code,.markdown-body h4 tt,.markdown-body h4 code,.markdown-body h5 tt,.markdown-body h5 code,.markdown-body h6 tt,.markdown-body h6 code{font-size: inherit}.markdown-body h1{padding-bottom: 0.3em;font-size: 2.25em;line-height: 1.2;border-bottom: 1px solid #eee}.markdown-body h1 .anchor{line-height: 1}.markdown-body h2{padding-bottom: 0.3em;font-size: 1.75em;line-height: 1.225;border-bottom: 1px solid #eee}.markdown-body h2 .anchor{line-height: 1}.markdown-body h3{font-size: 1.5em;line-height: 1.43}.markdown-body h3 .anchor{line-height: 1.2}.markdown-body h4{font-size: 1.25em}.markdown-body h4 .anchor{line-height: 1.2}.markdown-body h5{font-size: 1em}.markdown-body h5 .anchor{line-height: 1.1}.markdown-body h6{font-size: 1em;color: #777}.markdown-body h6 .anchor{line-height: 1.1}.markdown-body p,.markdown-body blockquote,.markdown-body ul,.markdown-body ol,.markdown-body dl,.markdown-body table,.markdown-body pre{margin-top: 0;margin-bottom: 16px}.markdown-body hr{height: 4px;padding: 0;margin: 16px 0;background-color: #e7e7e7;border: 0 none}.markdown-body ul,.markdown-body ol{padding-left: 2em}.markdown-body ul.no-list,.markdown-body ol.no-list{padding: 0;list-style-type: none}.markdown-body ul ul,.markdown-body ul ol,.markdown-body ol ol,.markdown-body ol ul{margin-top: 0;margin-bottom: 0}.markdown-body li>p{margin-top: 16px}.markdown-body dl{padding: 0}.markdown-body dl dt{padding: 0;margin-top: 16px;font-size: 1em;font-style: italic;font-weight: bold}.markdown-body dl dd{padding: 0 16px;margin-bottom: 16px}.markdown-body blockquote{padding: 0 15px;color: #777;border-left: 4px solid #ddd}.markdown-body blockquote>:first-child{margin-top: 0}.markdown-body blockquote>:last-child{margin-bottom: 0}.markdown-body table{display: block;width: 100%;overflow: auto;word-break: normal;word-break: keep-all}.markdown-body table th{font-weight: bold}.markdown-body table th,.markdown-body table td{padding: 6px 13px;border: 1px solid #ddd}.markdown-body table tr{background-color: #fff;border-top: 1px solid #ccc}.markdown-body table tr:nth-child(2n){background-color: #f8f8f8}.markdown-body img{max-width: 100%;box-sizing: border-box}.markdown-body span.frame{display: block;overflow: hidden}.markdown-body span.frame>span{display: block;float: left;width: auto;padding: 7px;margin: 13px 0 0;overflow: hidden;border: 1px solid #ddd}.markdown-body span.frame span img{display: block;float: left}.markdown-body span.frame span span{display: block;padding: 5px 0 0;clear: both;color: #333}.markdown-body span.align-center{display: block;overflow: hidden;clear: both}.markdown-body span.align-center>span{display: block;margin: 13px auto 0;overflow: hidden;text-align: center}.markdown-body span.align-center span img{margin: 0 auto;text-align: center}.markdown-body span.align-right{display: block;overflow: hidden;clear: both}.markdown-body span.align-right>span{display: block;margin: 13px 0 0;overflow: hidden;text-align: right}.markdown-body span.align-right span img{margin: 0;text-align: right}.markdown-body span.float-left{display: block;float: left;margin-right: 13px;overflow: hidden}.markdown-body span.float-left span{margin: 13px 0 0}.markdown-body span.float-right{display: block;float: right;margin-left: 13px;overflow: hidden}.markdown-body span.float-right>span{display: block;margin: 13px auto 0;overflow: hidden;text-align: right}.markdown-body code,.markdown-body tt{padding: 0;padding-top: 0.2em;padding-bottom: 0.2em;margin: 0;font-size: 85%;background-color: rgba(0,0,0,0.04);border-radius: 3px}.markdown-body code:before,.markdown-body code:after,.markdown-body tt:before,.markdown-body tt:after{letter-spacing: -0.2em;content: "\00a0"}.markdown-body code br,.markdown-body tt br{display: none}.markdown-body del code{text-decoration: inherit}.markdown-body pre>code{padding: 0;margin: 0;font-size: 100%;word-break: normal;white-space: pre;background: transparent;border: 0}.markdown-body .highlight{margin-bottom: 16px}.markdown-body .highlight pre,.markdown-body pre{padding: 16px;overflow: auto;font-size: 85%;line-height: 1.45;background-color: #f7f7f7;border-radius: 3px}.markdown-body .highlight pre{margin-bottom: 0;word-break: normal}.markdown-body pre{word-wrap: normal}.markdown-body pre code,.markdown-body pre tt{display: inline;max-width: initial;padding: 0;margin: 0;overflow: initial;line-height: inherit;word-wrap: normal;background-color: transparent;border: 0}.markdown-body pre code:before,.markdown-body pre code:after,.markdown-body pre tt:before,.markdown-body pre tt:after{content: normal}.markdown-body kbd{display: inline-block;padding: 3px 5px;font-size: 11px;line-height: 10px;color: #555;vertical-align: middle;background-color: #fcfcfc;border: solid 1px #ccc;border-bottom-color: #bbb;border-radius: 3px;box-shadow: inset 0 -1px 0 #bbb}.codehilite{background: #ffffff}.codehilite .c{color: #999988;font-style: italic}.codehilite .err{color: #a61717;background-color: #e3d2d2}.codehilite .k{color: #282a3a;font-weight: bold}.codehilite .o{color: #282a3a;font-weight: bold}.codehilite .cm{color: #999988;font-style: italic}.codehilite .cp{color: #999999;font-weight: bold}.codehilite .c1{color: #999988;font-style: italic}.codehilite .cs{color: #999999;font-weight: bold;font-style: italic}.codehilite .gd{color: #282a3a;background-color: #ffdddd}.codehilite .gd .x{color: #282a3a;background-color: #ffaaaa}.codehilite .ge{color: #282a3a;font-style: italic}.codehilite .gr{color: #aa0000}.codehilite .gh{color: #999999}.codehilite .gi{color: #282a3a;background-color: #ddffdd}.codehilite .gi .x{color: #282a3a;background-color: #aaffaa}.codehilite .go{color: #888888}.codehilite .gp{color: #555555}.codehilite .gs{font-weight: bold}.codehilite .gu{color: #aaaaaa}.codehilite .gt{color: #aa0000}.codehilite .kc{color: #282a3a;font-weight: bold}.codehilite .kd{color: #282a3a;font-weight: bold}.codehilite .kp{color: #282a3a;font-weight: bold}.codehilite .kr{color: #282a3a;font-weight: bold}.codehilite .kt{color: #445588;font-weight: bold}.codehilite .m{color: #009999}.codehilite .s{color: #d14}.codehilite .na{color: #008080}.codehilite .nb{color: #0086B3}.codehilite .nc{color: #445588;font-weight: bold}.codehilite .no{color: #008080}.codehilite .ni{color: #800080}.codehilite .ne{color: #990000;font-weight: bold}.codehilite .nf{color: #990000;font-weight: bold}.codehilite .nn{color: #555555}.codehilite .nt{color: #282a3a080}.codehilite .nv{color: #008080}.codehilite .ow{color: #282a3a;font-weight: bold}.codehilite .w{color: #bbbbbb}.codehilite .mf{color: #009999}.codehilite .mh{color: #009999}.codehilite .mi{color: #009999}.codehilite .mo{color: #009999}.codehilite .sb{color: #d14}.codehilite .sc{color: #d14}.codehilite .sd{color: #d14}.codehilite .s2{color: #d14}.codehilite .se{color: #d14}.codehilite .sh{color: #d14}.codehilite .si{color: #d14}.codehilite .sx{color: #d14}.codehilite .sr{color: #009926}.codehilite .s1{color: #d14}.codehilite .ss{color: #990073}.codehilite .bp{color: #999999}.codehilite .vc{color: #008080}.codehilite .vg{color: #008080}.codehilite .vi{color: #008080}.codehilite .il{color: #009999}
+  </style>
+  <style type="text/css">
+  .markdown-body hr{background:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC")}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="markup">
+      <article id="content" class="markdown-body">
+        <p><center>
+          <title>移動ロボットの動作確認</title>
+          <h5>第142回 ロボット工学セミナー</h5>
+          <h3>ロボットの作り方<br>
+            ～移動ロボットの制御とROSによる動作計画実習～</h3><br>
+          </center></p>
+
+          <p>基本的なROS上で移動ロボットの操作方法を学習します。</p>
+          <p><strong><em>TurtleBot3のモデル名を指定する必要があります。</em></strong></p>
+          <p><strong><code class="language-plaintext highlighter-rouge">【リモートPCで実施】</code></strong></p>
+          <div class="codehilite">
+            <pre>$ <span style="color:red">echo "export TURTLEBOT3_MODEL=burger" >> ~/.bashrc</span><br>$ <span style="color:red">source ~/.bashrc</span></pre>
+          </div>
+
+          <br>
+          <h2 id="シミュレーションでturtlebot3を操作">シミュレーションでTurtleBot3を操作</h2>
+          <p><strong><em>シミュレーション環境をインストールします。</em></strong></p>
+
+          <p><strong><code class="language-plaintext highlighter-rouge">【リモートPCで実施】</code></strong></p>
+          <div class="codehilite">
+            <pre>$ <span style="color:red">cd ~/catkin_ws/src/</span><br>$ <span style="color:red">git clone -b melodic-devel https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git</span><br>$ <span style="color:red">cd ..</span><br>$ <span style="color:red">catkin_make</span></pre>
+          </div>
+
+          <p><strong><em>シミュレーションを起動します。</em></strong></p>
+          <p><strong><code class="language-plaintext highlighter-rouge">【リモートPCで実施】</code></strong></p>
+          <div class="codehilite">
+            <pre>$ <span style="color:red">roslaunch turtlebot3_gazebo turtlebot3_empty_world.launch</span></pre>
+          </div>
+
+          <p>PCの性能によってシミュレータを起動するのに多少時間がかかります。下記のようなウィンドウが表示されるまで待ちましょう。</p>
+          <p><img src="images/turtlebot3/Gazebo_empty_world.png" alt="" /></p>
+
+
+          <h3 id="キーボードでロボットを操作">キーボードでロボットを操作</h3>
+          <p>TurtleBot3は、さまざまな機器での遠隔操作が可能です。PS3、 Xbox360、 ROBOTIS RC100などの無線機器で動作確認をしています。</p>
+          <p>簡易的な遠隔操作のテストを行うために<code class="language-plaintext highlighter-rouge">turtlebot3_teleop_key</code>ノードを起動します。</p>
+          <p><strong><em>新しいターミナルウィンドウを開き、以下のコマンドを入力します。</em></strong></p>
+
+          <p><strong><code class="language-plaintext highlighter-rouge">【リモートPCで実施】</code></strong></p>
+          <div class="codehilite">
+            <pre>$ <span style="color:red">roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch</span></pre>
+          </div>
+
+          <p>ノードの起動に成功すると、ターミナルウィンドウに以下のようなコマンドが表示されます。</p>
+          <div class="codehilite">
+            <pre>  Control Your Turtlebot3!
+  <span class="nt">---------------------------</span>
+  Moving around:
+          w
+     a    s    d
+          x
+
+  w/x : increase/decrease linear velocity
+  a/d : increase/decrease angular velocity
+  space key, s : force stop
+
+  CTRL-C to quit
+          </pre></div>
+          <p><strong><em>シミュレータの画面を見ながらそれぞれのキーを押してロボットがどう動くか確認しましょう。</em></strong></p>
+          <p><strong><em>シミュレータと<code class="language-plaintext highlighter-rouge">turtlebot3_teleop_key</code>を起動したターミナルで<code style="border: 1px solid black" class="language-plaintext highlighter-rouge">Ctrl+c</code>を押すとプログラムが終了します。</em></strong></p>
+
+          <br>
+
+          <h2 id="実際のturtlebot3を操作">実際のTurtleBot3を操作</h2>
+          <p><strong><em>下記の実習を行うために、まず<code class="language-plaintext highlighter-rouge">ROS_MASTER_URI</code>と<code class="language-plaintext highlighter-rouge">ROS_HOSTNAME</code>の<code class="language-plaintext highlighter-rouge">localhost</code>をリモートPCのIPアドレスに変更します。(下図参照)</em></strong></p>
+          <p><img src="images/seminar_no139/turtlebot_basics_remotepc_rosenv.png" alt="リモートPCのROS_MASTER_URI/ROS_HOSTNAME設定" /></p>
+          <p><strong><em>さきほど修正した設定を反映するため、以下を実行します。 (~/.bashrcの修正により、今後、新規にターミナルを開いた時は自動で設定が反映されます)</em></strong></p>
+
+          <p><strong><code class="language-plaintext highlighter-rouge">【リモートPCで実施】</code></strong></p>
+          <div class="codehilite">
+            <pre>$ <span style="color:red">source ~/.bashrc</pre>
+          </div>
+
+          <br>
+          <h3 id="turtlebotをリモートpcで表示">TurtleBotをリモートPCで表示</h3>
+          <div style="counter-reset: h1 6"></div>
+          <div class="notice--warning">
+          <p><strong>警告</strong>：</p>
+          <ol>
+            <li>TurtleBot3側のPC上で roscore を <strong>実行しないでください。</strong></li>
+            <li>各デバイスのIPアドレスが正しく設定されているかどうかを確認してください。</li>
+            <li>バッテリー電圧が11V以下になるとブザーアラームが鳴り続け、アクチュエータが作動しなくなります。ブザーアラームが鳴った場合は、バッテリーを充電する必要があります。</li>
+          </ol>
+          </div>
+
+          <h4 id="roscoreの実行">roscoreの実行</h4>
+          <p class="notice--info"><strong>注釈</strong>：ターミナルアプリは、画面左上の”Activities”から検索することが出来ます。ターミナルのショートカットキーは、<code style="border: 1px solid black" class="language-plaintext highlighter-rouge">Ctrl+Alt+t</code>です。</p>
+          <p><strong><em>リモートPCで roscoreを実行します。</em></strong></p>
+
+          <p><strong><code class="language-plaintext highlighter-rouge">【リモートPCで実施】</code></strong></p>
+          <div class="codehilite">
+            <pre>$ <span style="color:red">roscore</pre>
+          </div>
+
+          <h4 id="turtlebot3を起動">TurtleBot3を起動</h4>
+          <p>TurtleBot3のアプリケーションを起動するための基本的なパッケージを起動します。</p>
+          <p><strong><em>新しいターミナルウィンドウを開き、TurtleBot3の制御コンピュータ(SBC)にログインします。</em></strong></p>
+
+          <p><strong><code class="language-plaintext highlighter-rouge">【リモートPCで実施】</code></strong></p>
+          <div class="codehilite">
+            <pre>$ <span style="color:red">ssh ubuntu@192.168.YY.YY (The IP 192.168.YY.YY is your Raspberry Pi’s IP or hostname)</pre>
+          </div>
+
+          <p>パスワードは<strong>turtlebot</strong>です。(変更している場合は適宜読み替えてください)</p>
+          <p>下記のような表示があれば接続は成功です。</p>
+
+          <p><strong><code class="language-plaintext highlighter-rouge">【リモートPCで実施】</code></strong></p>
+          <div class="codehilite">
+            <pre>$ <span style="color:red">ssh ubuntu@192.168.YY.YY</span><br>
+ubuntu@192.168.YY.YY’s password:
+
+...
+
+Last login: <span class="o">[</span>曜日] <span class="o">[</span>月] <span class="o">[</span>日] XX:XX:XX 2022 from 192.168.XX.XX<br>$
+          </pre></div>
+          <p>SBCへのログイン後、以下を実行します。</p>
+          <p><strong><code class="language-plaintext highlighter-rouge">【リモートPCからログインしたSBCで実施】</code></strong></p>
+          <div class="codehilite">
+            <pre>$ <span style="color:red">roslaunch turtlebot3_bringup turtlebot3_robot.launch</span></pre>
+          </div>
+
+          <p>以下のようなメッセージが表示されます。
+          (IPアドレスなどは環境によって異なる可能性があります)</p>
+          <p>もし、メッセージが全く表示されない場合は、リモートPCおよび、SBCの<code class="language-plaintext highlighter-rouge">ROS_MASTER_URI</code>、<code class="language-plaintext highlighter-rouge">ROS_HOSTNAME</code>のIPアドレス設定が正しいか確認ください。</p>
+
+          <div class="codehilite">
+            <pre>SUMMARY
+<span class="o">========</span>
+
+PARAMETERS
+ <span class="k">*</span> /rosdistro: melodic
+ <span class="k">*</span> /rosversion: 1.14.10
+ <span class="k">*</span> /turtlebot3_core/baud: 115200
+ <span class="k">*</span> /turtlebot3_core/port: /dev/ttyACM0
+ <span class="k">*</span> /turtlebot3_core/tf_prefix:
+ <span class="k">*</span> /turtlebot3_lds/frame_id: base_scan
+ <span class="k">*</span> /turtlebot3_lds/port: /dev/ttyUSB0
+
+NODES
+  /
+    turtlebot3_core <span class="o">(</span>rosserial_python/serial_node.py<span class="o">)</span>
+    turtlebot3_diagnostics <span class="o">(</span>turtlebot3_bringup/turtlebot3_diagnostics<span class="o">)</span>
+    turtlebot3_lds <span class="o">(</span>hls_lfcd_lds_driver/hlds_laser_publisher<span class="o">)</span>
+
+<span class="nv">ROS_MASTER_URI</span><span class="o">=</span>http://192.168.1.2:11311
+
+process[turtlebot3_core-1]: started with pid <span class="o">[</span>14198]
+process[turtlebot3_lds-2]: started with pid <span class="o">[</span>14199]
+process[turtlebot3_diagnostics-3]: started with pid <span class="o">[</span>14200]
+<span class="o">[</span>INFO] <span class="o">[</span>1531306690.947198]: ROS Serial Python Node
+<span class="o">[</span>INFO] <span class="o">[</span>1531306691.000143]: Connecting to /dev/ttyACM0 at 115200 baud
+<span class="o">[</span>INFO] <span class="o">[</span>1531306693.522019]: Note: publish buffer size is 1024 bytes
+<span class="o">[</span>INFO] <span class="o">[</span>1531306693.525615]: Setup publisher on sensor_state <span class="o">[</span>turtlebot3_msgs/SensorState]
+<span class="o">[</span>INFO] <span class="o">[</span>1531306693.544159]: Setup publisher on version_info <span class="o">[</span>turtlebot3_msgs/VersionInfo]
+<span class="o">[</span>INFO] <span class="o">[</span>1531306693.620722]: Setup publisher on imu <span class="o">[</span>sensor_msgs/Imu]
+<span class="o">[</span>INFO] <span class="o">[</span>1531306693.642319]: Setup publisher on cmd_vel_rc100 <span class="o">[</span>geometry_msgs/Twist]
+<span class="o">[</span>INFO] <span class="o">[</span>1531306693.687786]: Setup publisher on odom <span class="o">[</span>nav_msgs/Odometry]
+<span class="o">[</span>INFO] <span class="o">[</span>1531306693.706260]: Setup publisher on joint_states <span class="o">[</span>sensor_msgs/JointState]
+<span class="o">[</span>INFO] <span class="o">[</span>1531306693.722754]: Setup publisher on battery_state <span class="o">[</span>sensor_msgs/BatteryState]
+<span class="o">[</span>INFO] <span class="o">[</span>1531306693.759059]: Setup publisher on magnetic_field <span class="o">[</span>sensor_msgs/MagneticField]
+<span class="o">[</span>INFO] <span class="o">[</span>1531306695.979057]: Setup publisher on /tf <span class="o">[</span>tf/tfMessage]
+<span class="o">[</span>INFO] <span class="o">[</span>1531306696.007135]: Note: subscribe buffer size is 1024 bytes
+<span class="o">[</span>INFO] <span class="o">[</span>1531306696.009083]: Setup subscriber on cmd_vel <span class="o">[</span>geometry_msgs/Twist]
+<span class="o">[</span>INFO] <span class="o">[</span>1531306696.040047]: Setup subscriber on sound <span class="o">[</span>turtlebot3_msgs/Sound]
+<span class="o">[</span>INFO] <span class="o">[</span>1531306696.069571]: Setup subscriber on motor_power <span class="o">[</span>std_msgs/Bool]
+<span class="o">[</span>INFO] <span class="o">[</span>1531306696.096364]: Setup subscriber on reset <span class="o">[</span>std_msgs/Empty]
+<span class="o">[</span>INFO] <span class="o">[</span>1531306696.390979]: Setup TF on Odometry <span class="o">[</span>odom]
+<span class="o">[</span>INFO] <span class="o">[</span>1531306696.394314]: Setup TF on IMU <span class="o">[</span>imu_link]
+<span class="o">[</span>INFO] <span class="o">[</span>1531306696.397498]: Setup TF on MagneticField <span class="o">[</span>mag_link]
+<span class="o">[</span>INFO] <span class="o">[</span>1531306696.400537]: Setup TF on JointState <span class="o">[</span>base_link]
+<span class="o">[</span>INFO] <span class="o">[</span>1531306696.407813]: <span class="nt">--------------------------</span>
+<span class="o">[</span>INFO] <span class="o">[</span>1531306696.411412]: Connected to OpenCR board!
+<span class="o">[</span>INFO] <span class="o">[</span>1531306696.415140]: This core<span class="o">(</span>v1.2.1<span class="o">)</span> is compatible with TB3 Burger
+<span class="o">[</span>INFO] <span class="o">[</span>1531306696.418398]: <span class="nt">--------------------------</span>
+<span class="o">[</span>INFO] <span class="o">[</span>1531306696.421749]: Start Calibration of Gyro
+<span class="o">[</span>INFO] <span class="o">[</span>1531306698.953226]: Calibration End
+          </pre></div>
+
+          <div class="notice--info">
+            <p><strong>ヒント</strong>：LiDARセンサ、Raspberry Pi Camera、Intel® RealSense™ R200、もしくはコアを別々に起動したい場合は、以下のコマンドを使用してください。</p>
+            <ul>
+              <li>$ roslaunch turtlebot3_bringup turtlebot3_lidar.launch</li>
+              <li>$ roslaunch turtlebot3_bringup turtlebot3_rpicamera.launch</li>
+              <li>$ roslaunch turtlebot3_bringup turtlebot3_realsense.launch</li>
+              <li>$ roslaunch turtlebot3_bringup turtlebot3_core.launch</li>
+            </ul>
+          </div>
+
+          <p class="notice--info"><strong>注釈</strong>：ターミナルウィンドウに<code class="language-plaintext highlighter-rouge">lost sync with device</code>というエラーメッセージが表示された場合は、TurtleBot3 のセンサデバイスが正しく接続されていない可能性があります。</p>
+
+          <h4 id="rviz上でturtlebot3をロードする">Rviz上でTurtleBot3をロードする</h4>
+          <p><strong>リモートPCで</strong> robot state publisherとRVizを実行します。</p>
+          <p><strong><em>新しいターミナルウィンドウを開き、以下のコマンドを入力します。</em></strong></p>
+
+          <p><strong><code class="language-plaintext highlighter-rouge">【リモートPCで実施】</code></strong></p>
+          <div class="codehilite">
+            <pre>$ <span style="color:red">roslaunch turtlebot3_bringup turtlebot3_remote.launch</span></pre>
+          </div>
+
+          <p><strong><em>新しいターミナルウィンドウを開き、以下のコマンドを入力します。</em></strong></p>
+
+          <p><strong><code class="language-plaintext highlighter-rouge">【リモートPCで実施】</code></strong></p>
+          <div class="codehilite">
+            <pre>$ <span style="color:red">rosrun rviz rviz -d `rospack find turtlebot3_description`/rviz/model.rviz</span></pre>
+          </div>
+
+          <p><img src="images/turtlebot3/run_rviz.jpg" alt="" /></p>
+
+          <br>
+          <h3 id="キーボードでロボットを操作-1">キーボードでロボットを操作</h3>
+
+          <div class="notice--info">
+          <p><strong>注釈</strong>：</p>
+          <ul>
+            <li>この例は、リモートPCでの動作を想定しています。</li>
+          </ul>
+          </div>
+
+          <p class="notice--warning"><strong>警告</strong>：この例を実行する前に、必ず<a href="#turtlebot3を起動">Bringup</a>コマンドを実行してください。また、テーブルの上でロボットをテストする際には、ロボットが落下してしまう可能性があるため、注意してください。</p>
+
+          <p>シミュレーションと同様に<code class="language-plaintext highlighter-rouge">turtlebot3_teleop_key</code>ノードを起動します。</p>
+
+          <p><strong><em>リモートPCで新しいターミナルウィンドウを開き、以下のコマンドを入力します。</em></strong></p>
+
+          <p><strong><code class="language-plaintext highlighter-rouge">【リモートPCで実施】</code></strong></p>
+          <div class="codehilite">
+            <pre>$ <span style="color:red">roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch</span></pre>
+          </div>
+
+          <p>ノードの起動に成功すると、ターミナルウィンドウに以下のようなコマンドが表示されます。</p>
+
+          <div class="codehilite">
+            <pre>Control Your Turtlebot3!
+<span class="nt">---------------------------</span>
+Moving around:
+        w
+   a    s    d
+        x
+
+w/x : increase/decrease linear velocity
+a/d : increase/decrease angular velocity
+space key, s : force stop
+
+CTRL-C to quit
+          </pre></div>
+
+          <p><strong><em>ロボットを床においてrvizの画面とロボットを確認しながらキーボードでロボットを動かしてみましょう。</em></strong></p>
+          <p>動作確認が終わりましたら一旦全てのノードを終了させます。</p>
+          <p><strong><em>下記のコマンドで<code class="language-plaintext highlighter-rouge">roscore</code>以外のノードを終了させることができます。</em></strong></p>
+
+          <p><strong><code class="language-plaintext highlighter-rouge">【リモートPCで実施】</code></strong></p>
+          <div class="codehilite">
+            <pre>$ <span style="color:red">rosnode kill -a</span></pre>
+          </div>
+
+
+          <p><code class="language-plaintext highlighter-rouge">roscore</code>を終了させるのに<code class="language-plaintext highlighter-rouge">roscore</code>を起動しているターミナルで<code style="border: 1px solid black" class="language-plaintext highlighter-rouge">Ctrl+c</code>を押します。
+          下記のような表示があれば<code class="language-plaintext highlighter-rouge">roscore</code>が終了したことが確認できます。</p>
+
+          <div class="codehilite">
+            <pre>^C[rosout-1] killing on <span class="nb">exit</span>
+<span class="o">[</span>master] killing on <span class="nb">exit
+</span>shutting down processing monitor ...
+... shutting down processing monitor <span class="nb">complete
+</span><span class="k">done</span></pre></div>
+
+          <p><strong><em>TurtleBot3のアプリケーションを起動するために開いたターミナルで<code class="language-plaintext highlighter-rouge">exit</code>を記入し、<code style="border: 1px solid black" class="language-plaintext highlighter-rouge">Enter</code>キーを押すと接続を切断します。</em></strong></p>
+
+          <p><strong><code class="language-plaintext highlighter-rouge">【リモートPCからログインしたSBCで実施】</code></strong></p>
+          <div class="codehilite">
+            <pre>$ <span style="color:red">exit</span><br>$ </pre>
+          </div>
+
+
+          <br>
+
+
+          <h2 id="ご参考">ご参考</h2>
+          <p>rosノードが実行中にTopicを可視化するツールを紹介します。デバッグなどに役立ちます。</p>
+
+          <h3 id="topicのモニタ">Topicのモニタ</h3>
+          <p>TurtleBot3のトピックを確認するために、ROSが提供するrqtを使用します。
+          rqtはすべてのトピックを表示することで、トピックのステータスを簡単に確認できるようにするツールです。</p>
+
+          <p><strong><em><code class="language-plaintext highlighter-rouge">roscore</code>が動作していることを確認後、以下のコマンドを使用して、リモートPCからrqtを実行します。</em></strong></p>
+
+          <p>トピックモニターウィンドウが表示されない場合は、<code style="border: 1px solid black" class="language-plaintext highlighter-rouge">plugin</code>-&gt;<code style="border: 1px solid black" class="language-plaintext highlighter-rouge">Topics</code>-&gt;<code style="border: 1px solid black" class="language-plaintext highlighter-rouge">Topic Monitor</code>を選択します。</p>
+
+          <p><strong><code class="language-plaintext highlighter-rouge">【リモートPCで実施】</code></strong></p>
+          <div class="codehilite">
+            <pre>$ <span style="color:red">rqt</span></pre>
+          </div>
+
+          <p>(起動時にターミナルにERRORが表示されることがありますが、rqtは起動するようです)</p>
+          <p>前項のようにTurtlebot3が動作している場合、以下のような表示になります。</p>
+
+          <p><img src="images/seminar_no139/turtlebot_basics_topic_monitor_list.png" alt="topic monitor list" /></p>
+          <p>トピックモニターが起動しても、トピック値はモニターされません。各トピックの横にあるチェックボックスをクリックして、トピックのモニターを開始します。</p>
+
+          <p><img src="images/seminar_no139/turtlebot_basics_topic_monitor_checkbox.png" alt="topic monitor checkbox" /></p>
+
+          <p>より詳細なトピックメッセージを表示するには、チェックボックスの横にあるアイコン▶をクリックします。</p>
+          <p><img src="images/seminar_no139/turtlebot_basics_topic_monitor_detail.png" alt="topic monitor detail" /></p>
+
+          <p>例えば、<code style="border: 1px solid black" class="language-plaintext highlighter-rouge">/battery_state</code>は、現在のバッテリー電圧や残量など、バッテリーの状態を表示します。</p>
+          <p><img src="images/seminar_no139/turtlebot_basics_topic_monitor_battery_state.png" alt="topic monitor battery state" /></p>
+
+          <p>このようにrqtでトピックを表示することで、デバッグなどへの活用が可能となります。</p>
+
+
+          <h4 id="topicとノードの関係">Topicとノードの関係</h4>
+
+          <p>TurtleBot3のトピックとノードの関係を可視化するには、rqt_graphを使用します。rqt_graphは各ノードがpublish/subscribeするトピックをグラフ表示します。</p>
+
+          <p><strong><em><code class="language-plaintext highlighter-rouge">roscore</code>が動作していることを確認後、以下のコマンドを使用してリモートPCからrqt_graphを実行します。</em></strong></p>
+          <p>各ノードとトピックの関係が表示されない場合は、左上のコンボボックスから、<code class="language-plaintext highlighter-rouge">Nodes/Topics(all)</code>を選択します。</p>
+
+          <p><strong><code class="language-plaintext highlighter-rouge">【リモートPCで実施】</code></strong></p>
+          <div class="codehilite">
+            <pre>$ <span style="color:red">rqt_graph</span></pre>
+          </div>
+
+          <p>(起動時にターミナルにERRORが表示されることがありますが、rqt_graphは起動するようです)</p>
+          <p>以下のように、ノードは円、トピックは矩形に囲まれて表示されます。</p>
+          <p><img src="images/seminar_no139/turtlebot_basics_rqt_graph.png" alt="rqt_grah" /></p>
+
+
+
+          <br>
+
+          <a href="index.html">メインページに戻る</a>
+
+                </article>
+              </div>
+            </div>
+          </body>
+          </html>
